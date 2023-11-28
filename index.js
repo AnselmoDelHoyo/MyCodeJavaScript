@@ -12,3 +12,22 @@
     en porciones que representen pedazos de información. En un entorno de JavaScript, esas
     porciones son llamadas valores.
 */
+
+// ====== Números
+
+/*
+    Valores númericos de tipo number (número) son como es de esperar, valores numéricos.
+    En un programa hecho en JavaScript, se escriben de la siguiente manera:
+*/
+
+11
+
+360
+
+// - Número Decimal
+
+9.81
+
+// - Notación científica
+
+2.998e8
