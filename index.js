@@ -31,3 +31,34 @@
 // - Notación científica
 
 2.998e8
+
+// ====== Aritmética
+
+100 + 4 * 11
+
+(100 + 4) * 11
+
+/*
+    Los símbolos + y * son operadores. El primero representa a la adición y el
+    segundo representa a la multiplicación.
+*/
+
+/*
+    Para sustraer, existe el operador -, y la división puede ser realizada
+    con el operador /.
+*/
+
+(100 - 5) / 5 // -> 19
+
+/* 
+    Cuando operadores aparecen juntos sin paréntesis el orden en el cuál son 
+    aplicados es determinado por la precedencia de los operadores, primero
+    / y * después + y -.
+*/ 
+
+/*
+    El operador % sirve para realizar de operación de residuo.
+*/
+
+314 % 100 // -> 14
+
