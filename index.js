@@ -30,13 +30,13 @@
 
 // - Notación científica
 
-2.998e8
+// 2.998e8
 
 // ====== Aritmética
 
-100 + 4 * 11
+// 100 + 4 * 11
 
-(100 + 4) * 11
+// (100 + 4) * 11
 
 /*
     Los símbolos + y * son operadores. El primero representa a la adición y el
@@ -48,7 +48,7 @@
     con el operador /.
 */
 
-(100 - 5) / 5 // -> 19
+// (100 - 5) / 5 // -> 19
 
 /* 
     Cuando operadores aparecen juntos sin paréntesis el orden en el cuál son 
@@ -60,5 +60,29 @@
     El operador % sirve para realizar de operación de residuo.
 */
 
-314 % 100 // -> 14
+// 314 % 100 // -> 14
 
+/* ====== Números Especiales */
+
+/*
+    Existen tres valores especiales en JavaScript que son considerados números
+    pero que no se comportan como números normales.
+
+    Los primeros dos son Infinity y -Infinity, los cuales representan las infinidades
+    positivas y negativas. Infinity - 1 aun es Infinity, y así sucesivamente. A pesar
+    de esto, no confíes mucho en computaciones que dependan de infinidades. Estas no
+    son matemáticamente confiables, y puede que muy rápidamente nos resulten en el próximo
+    número especial: NaN.
+
+    NaN significa "no es un número" ("Not a number"), aunque sea un valor del tipo numérico.
+    Obtendras este resultado cuando, por ejemplo, trates de calcular 0 / 0 (cero divido
+    cero), Infinity - Infinity, o cualquier otra cantidad de operaciones numéricas que no 
+    produzcan un resultado significante.
+*/
+
+Infinity
+-Infinity
+NaN
+
+console.log(0/0)
+console.log(Infinity - Infinity)
