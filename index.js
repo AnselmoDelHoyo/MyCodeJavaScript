@@ -86,3 +86,42 @@ NaN
 
 console.log(0/0)
 console.log(Infinity - Infinity)
+
+// ====== Strings
+
+/*
+    Los Strings son usados para representar texto. Son escritos encerrando su contenido en comillas.
+*/
+
+// `Debajo en el mar`
+// "Descansa en el océano"
+// 'Flota en el océano'
+
+console.log("Esta es la primera línea\nY esta es la segunda.")
+
+/*
+    Se encuentra, por supuesto, situaciones donde queremos que una barra invertida en un string
+    solo sea una barra invertida, y no un carácter especial. Si dos barras invertidas prosiguen una
+    a la otra, serán colapsadas y sólo una permanecerá en el valor resultante del string.
+*/
+
+console.log("Un caracter de salto de línea puede ser escrito así: \'\\n\'")
+
+/*
+    Los strings no pueden ser divididos, multiplicados, o substraidos, pero el operador + puede ser
+    utilizado en ellos. No los agrega, sino que los concatena, pega dos strings juntos. La siguiente
+    línea producirá el string "concatenar":
+*/
+
+console.log("con" + "cat" + "e" + "nar")
+
+/*
+    Si usamos comillas invertidas o plantillas literales, podemos hacer saltos de línea, y además
+    incrustar valores con la siguiente sintaxis:
+*/
+
+console.log(`La mitad de 100 es: ${ 100/2 }`)
+
+/*
+    Dentro del símbolo "${}" podemos colocar una expresión de JavaScript.
+*/
