@@ -145,4 +145,42 @@ console.log(typeof "x") // -> string
 
 console.log( - (10 - 2) )
 
+// ====== Valores Booleanos
 
+/*
+    Es frecuentemente util tener un valor que distingue entre solo dos posibilidades,
+    como "si", y "no", o "encendido" y "apagado". Para este propósito, JavaScript
+    tiene el tipo Boolean, que tiene solo dos valores: true (verdadero) y false (falso)
+    que se escriben de la misma forma.
+*/
+
+// ====== Comparación
+
+// > --- Mayor que
+// < --- Menor que
+console.log(3 > 2) // -> true
+console.log(3 < 2) // -> false
+
+console.log("Aardvark" < "Zoroaster") // -> true
+
+/*
+    La forma en la que los strings son ordenados, es aproximadamente alfabético, la diferencia
+    está en que las letras mayúsculas son simpre "menores que" las letras minúsculas,
+    así que "Z" < "a", y caracteres no alfabéticos (como !, - y demás) son también
+    incluidos en el ordenamiento. Cuando se comparan strings, JavaScript evalúa los
+    caracteres de izquierda a derecha, comparando los códigos Unicode.
+*/
+
+// Otros operadores son:
+
+// >= --- mayor o igual que
+// <= --- menor o igual que
+// == --- igual a
+// != --- no igual a
+
+console.log("Itchy" != "Scratchy") // -> true
+console.log("Manzana" == "Naranja") // -> false
+
+// Solo un valor en JavaScript no es igual a sí mismo, NaN.
+
+console.log(NaN == NaN) // -> false
