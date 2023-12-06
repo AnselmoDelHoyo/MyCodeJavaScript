@@ -125,3 +125,24 @@ console.log(`La mitad de 100 es: ${ 100/2 }`)
 /*
     Dentro del símbolo "${}" podemos colocar una expresión de JavaScript.
 */
+
+// ====== Operadores Unarios
+
+/*
+    No todos los operadores son símbolos. Algunos se escriben como palabras.
+    Un ejemplo es el operador typeof, que produce un string con el nombre del tipo
+    de valor que le demos.
+*/
+
+console.log(typeof 4.5) // -> number
+console.log(typeof "x") // -> string
+
+/*
+    Existen operadores que necesitan de dos expresiones para poder funcionar, llamados
+    operadores binarios, y también existen operadores que necesitan una única expresión,
+    estos son llamados unarios. El símbolo - puede funcionar como los dos.
+*/
+
+console.log( - (10 - 2) )
+
+
