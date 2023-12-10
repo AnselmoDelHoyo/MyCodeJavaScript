@@ -184,3 +184,33 @@ console.log("Manzana" == "Naranja") // -> false
 // Solo un valor en JavaScript no es igual a sí mismo, NaN.
 
 console.log(NaN == NaN) // -> false
+
+// ====== Operadores Lógicos
+
+/*
+    Existen operadores que pueden "razonar" entre valores Booleanos.
+    Estos son los operadores lógicos: and, or y not.
+*/
+
+// El resultado es verdadero si ambos valores son verdaderos.
+
+console.log(true && false) // -> false
+console.log(true && true) // -> true
+
+// El resultado es verdadero si cualquiera de los valores son verdaderos.
+
+console.log(false || true) // -> true
+console.log(false || false) // -> false
+
+/*
+    Not se escribe como un signo de exclamación (!). Es un operador unario que
+    voltea el valor dado. !true produce false y !false produce true.
+*/
+
+console.log(1 + 1 == 2 && 10 * 10 > 50) // -> true
+
+// El operador lógico ternario. Es escrito con un signo de interrogación y dos puntos.
+
+console.log(true ? 1 : 2) // -> 1
+console.log(false ? 1 : 2) // -> 2
+
