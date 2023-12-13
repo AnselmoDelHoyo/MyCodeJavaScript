@@ -214,3 +214,22 @@ console.log(1 + 1 == 2 && 10 * 10 > 50) // -> true
 console.log(true ? 1 : 2) // -> 1
 console.log(false ? 1 : 2) // -> 2
 
+// ====== Valores Vacíos
+
+/*
+    Existen dos valores especiales, escritos como null y undefined, que son usados
+    para denotar la ausencia de un valor significativo. Son en si mismos valores,
+    pero no traen consigo información.
+
+    Muchas operaciones en el lenguaje que no producen un valor significativo
+    (veremos algunas mas adelante), producen undefined simplemente porque tienen
+    que producir algún valor.
+
+    La diferencia en significado entre undefined y null es un accidente del diseño
+    de JavaScript, y realmente no importa la mayor parte del tiempo. En los casos
+    donde realmente tendríamos que preocuparnos por estos valores, mayormente
+    recomiendo que los trates como intercambiables.
+*/
+
+console.log(null)
+console.log(undefined)
