@@ -267,3 +267,33 @@ console.log(null == 0) // -> false
     prueba si un valor no es precisamente igual. Entonces "" === false es falso,
     como es de esperarse.
 */
+
+// ====== Corto Circuito de Operadores Lógicos
+
+/*
+    Los operadores lógicos && y ||, manejan valores de diferentes tipos de una forma
+    peculiar. Ellos convertirán el valor en su lado izquierdo a un tipo Booleano
+    para decidir que hacer, pero dependiendo del operador y el resultado de la
+    conversión, devolverán o el valor original de la izquierda o el valor de la derecha.
+
+    El operador ||, por ejemplo, devolverá el valor de su izquierda cuando este
+    puede ser convertido a verdadero y de ser lo contrario devolverá el valor de la
+    derecha. Esto tiene el efecto esperado cuando los valores son Booleanos, pero
+    se comporta de una forma algo análoga con valores de otros tipos.
+*/
+
+console.log(null || "usuario") // -> usuario
+console.log("Agnes" || "usuario") // -> Agnes
+
+/*
+    Podemos utilizar esta funcionalidad como una forma de recurrir a un valor
+    por defecto. Si tenemos un valor que puede estar vacío, podemos usar ||
+    después de este para remplazarlo con otro valor.
+
+    El operador && funciona de manera similar, pero de forma opuesta. Cuando
+    el valor a su izquierda es algo que se convierte a falso, devuelve ese valor, y de
+    lo contrario, devuelve el valor a su derecha.
+
+    Otra propiedad importante de estos dos operadores es que la parte de su derecha solo 
+    es evaluada si es necesario. En el caso que de true || X, o lo mismo con false && X.
+*/
