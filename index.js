@@ -233,3 +233,37 @@ console.log(false ? 1 : 2) // -> 2
 
 console.log(null)
 console.log(undefined)
+
+// ====== Conversión de tipo automática
+
+console.log(8 * null) // -> 0
+console.log("5" - 1) // -> 4
+console.log("5" + 1) // -> 51
+console.log("cinco" * 2) // -> NaN
+console.log(false == 0) // -> true
+
+/*
+    Cuando un operador es aplicado al tipo de valor "incorrecto", JavaScript
+    silenciosamente convertirá ese valor al tipo que necesita, utilizando una serie
+    de reglas que frecuentemente no dan el resultado que quisieras o esperarías.
+    Esto es llamado coercion de tipo.
+*/
+
+console.log(null == undefined) // -> true
+console.log(null == 0) // -> false
+
+/*
+    Este comportamiento es frecuentemente util. Cuando queremos probar si un
+    valor tiene un valor real en vez de null o undefined, puedes compararlo con
+    null usando el operador == (o !=).
+
+    Pero que pasa si queremos probar que algo se refiere precisamente al valor
+    false? Las reglas para convertir strings y números a valores Booleanos, dice
+    que 0, NaN, y el string vació ("") cuentan como false, mientras que todos
+    los otros valores cuentan como true. Debido a esto, expresiones como 0 ==
+    false, y "" == false son también verdaderas. Cuando no queremos ninguna
+    conversion de tipo automática, existen otros dos operadores adicionales: === y
+    !==. El primero prueba si un valor es precisamente igual al otro, y el segundo
+    prueba si un valor no es precisamente igual. Entonces "" === false es falso,
+    como es de esperarse.
+*/
