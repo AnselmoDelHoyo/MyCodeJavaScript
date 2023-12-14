@@ -297,3 +297,16 @@ console.log("Agnes" || "usuario") // -> Agnes
     Otra propiedad importante de estos dos operadores es que la parte de su derecha solo 
     es evaluada si es necesario. En el caso que de true || X, o lo mismo con false && X.
 */
+
+// ====== Resumen
+
+/*
+    Observamos cuatro tipos de valores de JavaScript en este capítulo: números,
+    textos (strings), Booleanos, y valores indefinidos. Tales valores son creados 
+    escribiendo su nombre (true, null) o valor (13,"abc"). Puedes combinar y transformar 
+    valores con operadores. Vimos operadores binarios para aritmética (+, -, *, /, y %), concatenación 
+    de strings (+), comparaciones (==, !=, ===, !==, <, >, <=, >=), y lógica (&&, ||), así también como 
+    varios otros operadores unarios (- para negar un número, ! para negar lógicamente, y typeof para 
+    saber el valor de un tipo) y un operador ternario (?:) para elegir uno de dos valores basándose en 
+    un tercer valor.
+*/
