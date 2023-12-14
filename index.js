@@ -310,3 +310,43 @@ console.log("Agnes" || "usuario") // -> Agnes
     saber el valor de un tipo) y un operador ternario (?:) para elegir uno de dos valores basándose en 
     un tercer valor.
 */
+
+// ====== Capítulo 2: Estructura de un Programa
+
+
+// ====== Expresiones y Declaraciones
+
+/*
+    Un fragmento de código que produce un valor se llama una expresión. Cada
+    valor que se escribe literalmente (como 22 o "psicoanálisis") es una expresión.
+
+    Esto demuestra parte de la belleza de una interfaz basada en un lenguaje.
+    Las expresiones pueden contener otras expresiones de una manera muy similar a como
+    las sub-oraciones en los lenguajes humanos están anidadas, una sub-oración puede
+    contener sus propias sub-oraciones, y así sucesivamente. Esto nos permite construir
+    expresiones que describen cálculos arbitrariamente complejos.
+
+    Sin una expresión corresponde al fragmento de una oración, una declaración en JavaScript
+    corresponde a una oración completa. Un programa es una lista de declaraciones.
+
+    El tipo más simple de declaración es una expresión que finaliza con un punto y coma.
+    Esto es un programa:
+*/
+
+1;
+!false;
+
+/*
+    Una expresión puede estar feliz solo con producir un valor, que luego pueda ser utilizado
+    por el código circundante. Una declaración es independiente por si misma, por lo que equivale
+    a algo solo si afecta al mundo.
+
+    Las declaraciones en el ejemplo anterior solo producen los valores 1 y true y luego inmediatamente
+    los tira a la basura. Esto no deja ninguna huella en el mundo. Cuando ejecutes este programa, nada 
+    observable ocurre.
+
+    En algunos casos, JavaScript te permite omitir el punto y coma al final de una declaración. En otros
+    casos, tiene que estar allí, o la próxima línea serán tratadas como parte de la misma declaración.
+    hay que usar puntos y comas.
+*/
+
