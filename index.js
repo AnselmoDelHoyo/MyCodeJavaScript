@@ -350,3 +350,54 @@ console.log("Agnes" || "usuario") // -> Agnes
     hay que usar puntos y comas.
 */
 
+// ====== Vinculaciones
+
+/*
+    ¿Cómo matiene un programa un estado interno? ¿Cómo recuerda cosas?
+    Para almacenar o mantener valores, JavaScript proporciona una cosa llamada vinculación o variable.
+*/
+
+let atrapado = 5 * 5;
+
+/*
+    La palabre clave "let" indica que esta declaración va a definir una vinculación. Le sigue el nombre 
+    de la vinculación y, si queremos darle un valor inmediatamente, un operador "=" y una expresión.
+*/
+
+let diez = 10;
+
+console.log(diez * diez); // -> 100
+
+/*
+    Cuando una vinculación señala a un valor, eso no significa que está atada a ese valor para siempre.
+*/
+
+let humor = "ligero";
+console.log(humor); // -> ligero
+
+humor = "oscuro";
+console.log(humor); // -> oscuro
+
+
+let deudaLuigi = 140;
+deudaLuigi = deudaLuigi - 35;
+console.log(deudaLuigi) // -> 105
+
+let uno = 1, dos = 2;
+console.log(uno + dos); // -> 3
+
+/*
+    Las palabras "var" y "const" también pueden ser usadas para crear vinculaciones, en una
+    manera similar a "let".
+*/
+
+var nombre = "Anselmo";
+const saludo = "Hola ";
+console.log(saludo + nombre); // -> Hola Ayda
+
+/*
+    var: es la forma en la que se declaraban las vinculaciones en JavaScript previo al 2015.
+    let: hace lo mismo que var, pero actualmente se deja de usar var por let.
+    const: representa una constante, define una vinculación que apunto al mismo valor por el tiempo que viva.
+*/
+
