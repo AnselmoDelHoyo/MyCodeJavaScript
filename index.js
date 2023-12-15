@@ -401,3 +401,23 @@ console.log(saludo + nombre); // -> Hola Ayda
     const: representa una constante, define una vinculación que apunto al mismo valor por el tiempo que viva.
 */
 
+// ====== Nombres Vinculantes
+
+/*
+    Las palabras con un significado especial, como "let", son palabras claves, y
+    no pueden usarse como nombres vinculantes. También hay una cantidad de
+    palabras que están "reservadas para su uso" en futuras versiones de JavaScript,
+    que tampoco pueden ser usadas como nombre vinculantes. La lista completa
+    de palabras clave y palabras reservadas es bastante larga:
+
+    break case catch class const continue debugger default
+    delete do else enum export extends false finally for
+    function if implements import interface in instanceof let
+    new package private protected public return static super
+    switch this throw true try typeof var void while with yield
+
+    Cuando crear una vinculación produzca un error de sintaxis inesperado, observa
+    si estás tratando de definir una palabra reservada.
+*/
+
+
