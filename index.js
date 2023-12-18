@@ -420,4 +420,16 @@ console.log(saludo + nombre); // -> Hola Ayda
     si estás tratando de definir una palabra reservada.
 */
 
+// El Entorno
+
+/*
+    La colección de vinculaciones y sus valores que existen en un momento dado
+    se llama entorno. Cuando se inicia un programa, este entorno no está vacío.
+    Siempre contiene vinculaciones que son parte del estándar del lenguaje, y la
+    mayoría de las veces, también tiene vinculaciones que proporcionan formas
+    de interactuar con el sistema circundante. Por ejemplo, en el navegador, hay
+    funciones para interactuar con el sitio web actualmente cargado y para leer
+    entradas del mouse y teclado.
+*/
+
 
