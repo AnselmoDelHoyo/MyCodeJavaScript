@@ -432,4 +432,4 @@ console.log(saludo + nombre); // -> Hola Ayda
     entradas del mouse y teclado.
 */
 
-
+// >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Paso a "index.html"
