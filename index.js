@@ -433,3 +433,81 @@ console.log(saludo + nombre); // -> Hola Ayda
 */
 
 // >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Paso a "index.html"
+
+// >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Entrada
+
+// Flujo de Control
+
+/*
+    Cuando tu programa contiene más de una declaración, las declaraciones se
+    ejecutan como si fueran una historia, de arriba a abajo. Este programa de
+    ejemplo tiene dos declaraciones.
+*/
+
+// let elNumero = Number(prompt("Elige un número"));
+// console.log("Tu número es la raíz cuadrada de " + elNumero * elNumero);
+
+/*
+    La función Number convierte un valor a un número. Hay funciones similares
+    llamadas String y Boolean que convierten valores a esos tipos.
+*/
+
+// Flujo de control en línea recta:
+
+// =======================>
+
+// Ejecución Condicional
+
+/*
+    No todos los programas son caminos rectos. Podemos, por ejemplo, querer
+    crear un camino de ramificación, donde el programa toma la rama adecuada
+    basandose en la situacion en cuestión. Esto se llama ejecución condicional.
+
+            |======>
+    ======>         ======>
+            |======>
+*/
+
+// let elNumero = Number(prompt("Elige un número"));
+// if (!Number.isNaN(elNumero)) {
+//      console.log("Tu número es la raiz cuadrada de " + elNumero * elNumero);
+// }
+
+if (1 + 1 == 2) console.log("Es verdad"); // -> Es verdad
+
+/*
+    La palabra clave else se puede usar, junto con if, para crear dos caminos
+    de ejecución alternativos, de una manera separada.
+*/
+
+// let elNumero = Number(prompt("Elige un numero"));
+
+// if (!Number.isNaN(elNumero)) {
+//     console.log("Tu número es la raiz cuadrada de " + elNumero * elNumero);
+// } else {
+//     console.log("Ey. Por qué no me diste un número?");
+// }
+
+/*
+    Si tenemos más de dos rutas a elegir, múltiples pares de if/else se
+    pueden "encadenar". Aquí hay un ejemplo:
+*/
+
+// let numero = Number(prompt("Elige un numero"));
+
+// if (numero < 10) {
+//     console.log("Pequeño");
+// } else if (numero < 100) {
+//     console.log("Mediano");
+// } else {
+//     console.log("Grande");
+// }
+
+// El esquema de este programa se ve así:
+
+/*  
+            |=========>
+            |
+    ======>        |=====> |======>
+            |====> |=====>
+*/
