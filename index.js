@@ -579,5 +579,19 @@ console.log(resultado) // 1024
 // } while (!tuNombre)
 // console.log(tuNombre)
 
+// Indentando Código
 
+/*
+    Podríamos escribir un programa en una sola línea inmensa. El rol de la identación 
+    dentro de los bloques es hacer que la estructura del código se destaque. En código
+    donde se abren nuevos bloques dentro de otros bloques, puede ser difícil ver dónde
+    termina un bloque y donde comienza el otro. Con la indentación apropiada, la forma
+    visual de un programa corresponde a la forma de los bloques dentro de él.
+*/
 
+if (false != true) {
+    console.log("Esto tiene sentido.");
+    if (1 < 2) {
+        console.log("Ninguna sorpresa allí.")
+    }
+}
