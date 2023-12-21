@@ -511,3 +511,73 @@ if (1 + 1 == 2) console.log("Es verdad"); // -> Es verdad
     ======>        |=====> |======>
             |====> |=====>
 */
+
+// Ciclos While y Do
+
+/* 
+    Considera un programa que muestra todos los números pares de 0 a 12. Una
+    forma de escribir esto es la siguiente:
+*/
+
+console.log(0);
+console.log(2);
+console.log(4);
+console.log(6);
+console.log(8);
+console.log(10);
+console.log(12);
+
+/*
+    Eso funciona, pero la idea de escribir un programa es hacer de algo menos
+    trabajo, no más. Si necesitamos todos los números pares menores a 1000,
+    este enfoque sería poco práctico. Lo que necesitamos es una forma de ejecutar
+    una pieza de código multiples veces. Esta forma de flujo de control es llamada
+    un ciclo (o "loop"):
+*/
+
+/*
+    ========> 0 ======>
+            |  |
+            <==>
+*/
+
+/*
+    El flujo de control de ciclos nos permite regresar a algún punto del programa
+    en donde estábamos antes y repetirlo con nuestro estado del programa actual.
+*/
+
+let numero = 0;
+
+while (numero <= 12) {
+    console.log(numero);
+    numero = numero + 2;
+}
+// -> 0
+// -> 2
+// ... etcétera
+
+let resultado = 1;
+let contador = 0;
+
+while (contador < 10) {
+    resultado = resultado * 2;
+    contador++
+}
+
+console.log(resultado) // 1024
+
+/*
+    Un ciclo do es una estructura de control similar a un ciclo while. Difiere
+    solo en un punto: un ciclo do siempre ejecuta su cuerpo al menos una vez, y
+    comienza a chequear si debe detenerse solo después de esa primera ejecución.
+    Para reflejar esto, la prueba aparece después del cuerpo del ciclo:
+*/
+
+// let tuNombre;
+// do {
+//     tuNombre = prompt("Quién eres?");
+// } while (!tuNombre)
+// console.log(tuNombre)
+
+
+
