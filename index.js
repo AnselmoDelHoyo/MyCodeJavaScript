@@ -628,3 +628,29 @@ for (let contador = 0; contador < 10; contador++) {
     resultadoPotencia = resultadoPotencia * 2;
 }
 console.log(resultadoPotencia); // -> 1024
+
+// Rompiendo un Ciclo
+
+/*
+    Hacer que la condición del ciclo produzca false no es la única forma
+    en que el ciclo puede terminar. Hay una declaración especial llamada break
+    ("romper") que tiene el efecto de inmediatamente saltar afuera del ciclo
+    circundante.
+
+    Este programa ilustra la declaración break. Encuentra el primer número que
+    es a la vez mayor o igual a 20 y divisible por 7.
+*/
+
+for (let actual = 20; ; actual = actual + 1) {
+    if (actual % 7 == 0) {
+        console.log(actual);
+        break;
+    }
+} // -> 21
+
+/*
+    La palabra clave continue ("continuar") es similar a break, en que influye el
+    progreso de un ciclo. Cuando continue se encuentre en el cuerpo de un ciclo,
+    el control salta afuera del cuerpo y continúa con la siguiente iteración del ciclo.
+*/
+
