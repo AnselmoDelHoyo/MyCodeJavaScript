@@ -595,3 +595,36 @@ if (false != true) {
         console.log("Ninguna sorpresa allí.")
     }
 }
+
+// Ciclos For
+
+/*
+    Existe un patrón muy común a la hora de crear ciclos. Primero una vinculación
+    "contador" se crea para seguir el proceso del ciclo. Entonces viene un ciclo while,
+    generalmente con una expresión de prueba que verifica si el contador ha alconzado su
+    valor final. Al final del cuerpo del ciclo, el contador se actualiza para mantener un
+    seguimiento del proceso.
+
+    Debido a este patrón común, JavaScript y otros lenguajes similares proporcionan una forma
+    un poco más corta y más completa, el ciclo for:
+*/
+
+for (let numero = 0; numero <= 12; numero += 2) {
+    console.log(numero);
+}
+
+// -> 0
+// -> 2
+// ... etcétera
+
+// Primero: inicializa el ciclo.
+// Segundo: valida si el ciclo debe continuar.
+// Tercero: actualiza el estado del ciclo después de cada iteración.
+
+// Ejemplo que calcula 2^10, usando for en lugar de while:
+
+let resultadoPotencia = 1;
+for (let contador = 0; contador < 10; contador++) {
+    resultadoPotencia = resultadoPotencia * 2;
+}
+console.log(resultadoPotencia); // -> 1024
