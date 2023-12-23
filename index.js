@@ -654,3 +654,30 @@ for (let actual = 20; ; actual = actual + 1) {
     el control salta afuera del cuerpo y continúa con la siguiente iteración del ciclo.
 */
 
+// Actualizando Vinculaciones de Manera Sucinta
+
+/*
+    Un programa a menudo necesita "actualizar" una vinculación para mantener un valor
+    basandose en el valor anterior de esa vinculación.
+*/
+
+let contador2 = contador2 + 1;
+
+// JavaScript provee de un atajo para esto:
+
+contador2 += 1;
+
+/*
+    Atajos similares funcionan para muchos otros operadores, como "resultado
+    *= 2" para duplicar "resultado" o "contador -= 1" para contar hacia abajo.
+    Esto nos permite acortar un poco más nuestro ejemplo de conteo.
+*/
+
+for (let numero = 0; numero <= 12; numero += 2) {
+    console.log(numero);
+}
+
+/*
+    Para contador += 1 y contador -= 1, hay incluso equivalentes más cortos:
+    contador++ y contador --.
+*/
