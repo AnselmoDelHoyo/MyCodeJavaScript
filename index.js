@@ -661,11 +661,11 @@ for (let actual = 20; ; actual = actual + 1) {
     basandose en el valor anterior de esa vinculación.
 */
 
-let contador2 = contador2 + 1;
+// let contador2 = contador2 + 1;
 
 // JavaScript provee de un atajo para esto:
 
-contador2 += 1;
+// contador2 += 1;
 
 /*
     Atajos similares funcionan para muchos otros operadores, como "resultado
@@ -680,4 +680,44 @@ for (let numero = 0; numero <= 12; numero += 2) {
 /*
     Para contador += 1 y contador -= 1, hay incluso equivalentes más cortos:
     contador++ y contador --.
+*/
+
+// Despachar una valor con Switch
+
+// No es común que el código se vea así:
+
+// if (x == "valor1") accion();
+// else if (x == "valor2") accion2();
+// else if (x == "valor3") accion3();
+// else accionPorDefault();
+
+/*
+    Existe un constructo llamado switch que está destinada a expresar tales
+    "despachos" de una manera más directa. Desafortunadamente, la sintaxis que
+    JavaScript usa para esto es algo incómoda, una cadena de declaraciones if podría
+    llegar a verse mejor. Aquí hay un ejemplo:
+*/
+
+let clima = "lluvioso";
+
+switch (clima) {
+    case "lluvioso":
+        console.log("Recuerda salir con paraguas.");
+        break;
+    case "soleado":
+        console.log("Vístete con poca ropa.");
+    case "nublado":
+        console.log("Ve afuera.");
+        break;
+    default:
+        console.log("Tipo de clima desconocido!");
+        break;
+}
+
+/*
+    Se pueden poner cualquier número de etiquetas de case dentro del bloque abierto
+    por switch. El programa comenzará a ejecutarse en la etiqueta que corresponde
+    al valor que se le dio a switch, o en default si no se encuentra ningún valor
+    que coincida. Continuará ejecutándose, incluso a través de otras etiquetas,
+    hasta que llegue a una declaración break.
 */
