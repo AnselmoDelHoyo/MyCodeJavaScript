@@ -743,3 +743,35 @@ pequeñaTortugaVerde; // camelCase
     culación también está en mayúscula. Esto se hizo para marcar esta función
     como un constructor.
 */
+
+// Comentarios
+
+/*
+    Un comentario es una pieza de texto que es parte de un programa pero que
+    es completamente ignorado por la computadora. JavaScript tiene dos formas
+    de escribir comentarios. Para escribir un comentario de una sola línea, puede
+    usar dos caracteres de barras inclinadas (//) y luego el texto del comentario después.
+
+    let balanceDeCuenta = calcularBalance(cuenta);
+    // Es un claro del bosque donde canta un río
+    balanceDeCuenta.ajustar();
+    // Cuelgan enloquecidamente de las hierbas harapos de plata
+    let reporte = new Reporte();
+    // Donde el sol de la orgullosa montaña luce:
+    añadirAReporte(balanceDeCuenta, reporte);
+    // Un pequeño valle espumoso de luz.
+
+    Un comentario // va solo hasta el final de la línea. Una sección de texto entre
+    /* y */ /* se ignorará en su totalidad, independientemente de si contiene saltos
+    de línea. Esto es útil para agregar bloques de información sobre un archivo o
+    un pedazo de programa.
+*/
+
+/*
+    Primero encontré este número garabateado en la parte posterior de un viejo cuaderno.
+    Desde entonces, a menudo lo he visto, apareciendo en números de teléfono y en los números
+    de serie de productos que he comprado. Obviamente me gusta, así que decidí quedármelo.
+*/
+
+const miNumero = 11213;
+
