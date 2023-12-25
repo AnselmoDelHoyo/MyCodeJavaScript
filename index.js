@@ -775,3 +775,25 @@ pequeñaTortugaVerde; // camelCase
 
 const miNumero = 11213;
 
+// Resumen
+
+/*
+    Un programa está construido a partir de declaraciones, las
+    cuales a veces pueden contener más declaraciones. Las declaraciones tienden a
+    contener expresiones, que a su vez se pueden construir a partir de expresiones
+    más pequeñas.
+
+    Poner declaraciones una después de otra da un programa que es ejecutado
+    de arriba hacia abajo. Se pueden introducir alteraciones en el flujo de control
+    usando declaraciones condicionales (if, else, y switch) y ciclos (while, do, y
+    for).
+
+    Las vinculaciones se pueden usar para archivar datos bajo un nombre, y son
+    útiles para el seguimiento de estado en un programa. El entorno es el conjunto
+    de vinculaciones que se definen. Los sistemas de JavaScript siempre incluyen
+    por defecto un número de vinculaciones estándar útiles en el entorno.
+
+    Las funciones son valores especiales que encapsulan una parte del programa.
+    Se pueden invocar escribiendo nombreDeLaFuncion(argumento1, argumento2).
+    Tal llamada a función es una expresión, y puede producir un valor.
+*/
