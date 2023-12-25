@@ -721,3 +721,25 @@ switch (clima) {
     que coincida. Continuará ejecutándose, incluso a través de otras etiquetas,
     hasta que llegue a una declaración break.
 */
+
+// Capitalización
+
+/*
+    Los nombres de vinculaciones no pueden contener espacios, sin embargo, a
+    menudo es útil usar múltiples palabras para describir claramente lo que representa
+    la vinculación. Estas son más o menos tus opciones para escribir el nombre
+    de una vinculación con varias palabras en ella:
+*/
+
+let pequeñatortugaverde, // Difícil de leer
+pequeña_tortuga_verde, // snake_case
+PequeñaTortugaVerde, // PascalCase
+pequeñaTortugaVerde; // camelCase
+
+/*
+    En JavaScript se suele utilizar "camelCase".
+
+    En algunos casos, como en la función "Number", la primera letra de la vin-
+    culación también está en mayúscula. Esto se hizo para marcar esta función
+    como un constructor.
+*/
