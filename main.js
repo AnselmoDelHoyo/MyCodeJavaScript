@@ -797,3 +797,42 @@ const miNumero = 11213;
     Se pueden invocar escribiendo nombreDeLaFuncion(argumento1, argumento2).
     Tal llamada a función es una expresión, y puede producir un valor.
 */
+
+// ====== Capítulo 3: Funciones
+
+/*
+    Las funciones son el pan y la mantequilla de la programación en JavaScript.
+    El concepto de envolver una pieza de programa en un valor tiene muchos usos.
+    Esto nos da una forma de estructurar programas más grandes, de reducir la repetición,
+    de asociar nombres con subprogramas y de aislar estos subprogramas unos con otros.
+*/
+
+// ====== Definiendo una función
+
+const cuadrado = function(x) {
+    return x * x;
+}
+
+console.log(cuadrado(12)) // 144
+
+/*
+    Una función puede tener múltiples parámetros o ningún parámetro en absoluto.
+    En el siguiente ejemplo, hacerSonido no lista ningún nombre de parámetro, mientras
+    que potencia enumera dos:
+*/
+
+const hacerSonido = function() {
+    console.log("Pling!");
+}
+
+hacerSonido(); // -> Pling!
+
+const potencia = function(base, exponente) {
+    let resultado = 1;
+    for (let cuenta = 0; cuenta < exponente; cuenta++) {
+        resultado *= base;
+    }
+    return resultado;
+}
+
+console.log(potencia(2, 10)) // -> 1024
