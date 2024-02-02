@@ -836,3 +836,62 @@ const potencia = function(base, exponente) {
 }
 
 console.log(potencia(2, 10)) // -> 1024
+
+// Vinculaciones y Alcances
+
+/*
+    Cada vinculación tiene un alcance, que corresponde a la parte del programa en
+    donde la vinculación es visible. Para vinculaciones definidas fuera de cualquier
+    función o bloque, el alcance es todo el programa. Estas son llamadas globales.
+
+    Pero las vinculaciones creadas como parámetros de función o declaradas dentro de
+    una función solo puede ser referenciadas en esa función. Estas se llaman locales.
+*/
+
+/*
+    Vinculaciones declaradas con let y const son, de hecho, locales al bloque
+    donde esten declarados, así que si creas uno de esas dentro de un ciclo, el 
+    código antes y después del ciclo no puede "verlas". Las vinculaciones creadas 
+    con la palabra clave var, son visibles a lo largo de toda la función en la que aparecen,
+    o en todo el alcance global, si no están dentro de una función.
+*/
+
+let x = 10;
+if (true) {
+    let y = 20;
+    var z = 30;
+    console.log(x + y + z);
+    // -> 60
+}
+// y no es visible desde aquí
+console.log(x + z);
+// -> 40
+
+// Alcance Anidado
+
+/*
+    JavaScript no solo distingue entre vinculaciones globales y locales. Bloques y
+    funciones puden ser creados dentro de otros bloques y funciones, produciendo
+    múltiples grados de localidad.
+
+    Por ejemplo, esta función, que muestra los ingredientes necesarios para
+    hacer un lote de humus, tiene otra función dentro de ella.
+*/
+
+const humus = function(factor) {
+    const ingrediente = function(cantidad, unidad, nombre) {
+        let cantidadIngrediente = cantidad * factor;
+        if (cantidadIngrediente > 1) {
+            unidad += "s";
+        }
+        console.log(`${cantidadIngrediente} ${unidad} ${nombre}`);
+    };
+    ingrediente(1, "lata", "garbanzos");
+    ingrediente(0.25, "taza", "tahini");
+    ingrediente(0.25, "taza", "jugo de limón");
+    ingrediente(1, "clavo", "ajo");
+    ingrediente(2, "cucharada", "aceite de oliva");
+    ingrediente(0.5, "cucharadita", "comino");
+}
+
+humus(1)
