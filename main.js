@@ -917,3 +917,35 @@ let lanzarMisiles = function() {
 if(modoSeguro) {
     lanzarMisiles = function() { /* no hacer nada */}
 }
+
+// Notación de Declaración
+
+/* Hay una forma ligeramente más corta de crear una vinculación de función. */
+
+function cuadrado(x) {
+    return x * x;
+}
+
+/*
+    Esta es una declaración de función. La declaración define la vinculación cuadrado
+    y la apunta a la función dada. Esto es un poco más fácil de escribir, y no requiere
+    un punto y coma después de la función.
+
+    Hay una sutileza con esta forma de definir una función.
+*/
+
+console.log("El futuro dice:", futuro());
+
+function futuro() {
+    return "Nunca tendrán autos voladores";
+}
+
+/* 
+    Este código funciona, aunque la función esté definida debajo del código que lo usa.
+    Las declaraciones de funciones no son parte del flujo de control regular de arriba
+    hacia abajo, Estas son conceptualmente trasladadas a la cima de su alcance y 
+    pueden ser utilizadas por todo el código en ese alcance.
+*/
+
+
+
