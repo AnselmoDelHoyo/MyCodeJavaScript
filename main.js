@@ -895,3 +895,25 @@ const humus = function(factor) {
 }
 
 humus(1)
+
+// Funciones como valores
+
+/*
+    Las vinculaciones de función simplemente actúan como nombre para una pieza 
+    específica del programa. Tal vinculación se define una vez y nunca cambia. Esto
+    hace que sea fácil confundir la función con su nombre.
+
+    Un valor de función puede hacer todas las cosas que otros valores pueden hacer,
+    puedes usarlo en expresiones arbitrarias, no solo llamarlo. Es posible almacenar
+    un valor de función en una nueve vinculación, pasarla como argumento a una función, y
+    así sucesivamente. Del mismo modo, una vinculación que contenga una función sigue
+    siendo solo una vinculación regular y se le puede asignar un nuevo valor, asi:
+*/
+
+let lanzarMisiles = function() {
+    sistemaDeMisiles.lanzar("ahora");
+};
+
+if(modoSeguro) {
+    lanzarMisiles = function() { /* no hacer nada */}
+}
