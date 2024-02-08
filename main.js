@@ -818,16 +818,15 @@ console.log(cuadrado(12)) // 144
 /*
     Una función puede tener múltiples parámetros o ningún parámetro en absoluto.
     En el siguiente ejemplo, hacerSonido no lista ningún nombre de parámetro, mientras
-    que potencia enumera dos:
+    que potencia enumera.```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+/*
+    Existe un tercera notación para funciones, que se ve muy diferente de las otras.
+    En lugar de la palabra clave function, usa una flecha (=>) compuesta de los caracteres
+    igual y mayor que.
 */
 
-const hacerSonido = function() {
-    console.log("Pling!");
-}
-
-hacerSonido(); // -> Pling!
-
-const potencia = function(base, exponente) {
+const aLaPontencia = (base, exponente) => {
     let resultado = 1;
     for (let cuenta = 0; cuenta < exponente; cuenta++) {
         resultado *= base;
@@ -835,117 +834,20 @@ const potencia = function(base, exponente) {
     return resultado;
 }
 
-console.log(potencia(2, 10)) // -> 1024
-
-// Vinculaciones y Alcances
-
 /*
-    Cada vinculación tiene un alcance, que corresponde a la parte del programa en
-    donde la vinculación es visible. Para vinculaciones definidas fuera de cualquier
-    función o bloque, el alcance es todo el programa. Estas son llamadas globales.
-
-    Pero las vinculaciones creadas como parámetros de función o declaradas dentro de
-    una función solo puede ser referenciadas en esa función. Estas se llaman locales.
+    Cuando solo haya un solo nombre de parámetro, los paréntesis alrededor de
+    la lista de parámetros puede ser omitida.
 */
 
-/*
-    Vinculaciones declaradas con let y const son, de hecho, locales al bloque
-    donde esten declarados, así que si creas uno de esas dentro de un ciclo, el 
-    código antes y después del ciclo no puede "verlas". Las vinculaciones creadas 
-    con la palabra clave var, son visibles a lo largo de toda la función en la que aparecen,
-    o en todo el alcance global, si no están dentro de una función.
-*/
-
-let x = 10;
-if (true) {
-    let y = 20;
-    var z = 30;
-    console.log(x + y + z);
-    // -> 60
-}
-// y no es visible desde aquí
-console.log(x + z);
-// -> 40
-
-// Alcance Anidado
+const cuadrado1 = (x) => { return x * x; };
+const cuadrado2 = x => x * x;
 
 /*
-    JavaScript no solo distingue entre vinculaciones globales y locales. Bloques y
-    funciones puden ser creados dentro de otros bloques y funciones, produciendo
-    múltiples grados de localidad.
-
-    Por ejemplo, esta función, que muestra los ingredientes necesarios para
-    hacer un lote de humus, tiene otra función dentro de ella.
+    Cuando una función de flecha no tiene parámetros, su lista de parámetros
+    es solo un conjunto vacío de paréntesis.
 */
 
-const humus = function(factor) {
-    const ingrediente = function(cantidad, unidad, nombre) {
-        let cantidadIngrediente = cantidad * factor;
-        if (cantidadIngrediente > 1) {
-            unidad += "s";
-        }
-        console.log(`${cantidadIngrediente} ${unidad} ${nombre}`);
-    };
-    ingrediente(1, "lata", "garbanzos");
-    ingrediente(0.25, "taza", "tahini");
-    ingrediente(0.25, "taza", "jugo de limón");
-    ingrediente(1, "clavo", "ajo");
-    ingrediente(2, "cucharada", "aceite de oliva");
-    ingrediente(0.5, "cucharadita", "comino");
-}
-
-humus(1)
-
-// Funciones como valores
-
-/*
-    Las vinculaciones de función simplemente actúan como nombre para una pieza 
-    específica del programa. Tal vinculación se define una vez y nunca cambia. Esto
-    hace que sea fácil confundir la función con su nombre.
-
-    Un valor de función puede hacer todas las cosas que otros valores pueden hacer,
-    puedes usarlo en expresiones arbitrarias, no solo llamarlo. Es posible almacenar
-    un valor de función en una nueve vinculación, pasarla como argumento a una función, y
-    así sucesivamente. Del mismo modo, una vinculación que contenga una función sigue
-    siendo solo una vinculación regular y se le puede asignar un nuevo valor, asi:
-*/
-
-let lanzarMisiles = function() {
-    sistemaDeMisiles.lanzar("ahora");
+const bocina = () => {
+    console.log("Toot");
 };
-
-if(modoSeguro) {
-    lanzarMisiles = function() { /* no hacer nada */}
-}
-
-// Notación de Declaración
-
-/* Hay una forma ligeramente más corta de crear una vinculación de función. */
-
-function cuadrado(x) {
-    return x * x;
-}
-
-/*
-    Esta es una declaración de función. La declaración define la vinculación cuadrado
-    y la apunta a la función dada. Esto es un poco más fácil de escribir, y no requiere
-    un punto y coma después de la función.
-
-    Hay una sutileza con esta forma de definir una función.
-*/
-
-console.log("El futuro dice:", futuro());
-
-function futuro() {
-    return "Nunca tendrán autos voladores";
-}
-
-/* 
-    Este código funciona, aunque la función esté definida debajo del código que lo usa.
-    Las declaraciones de funciones no son parte del flujo de control regular de arriba
-    hacia abajo, Estas son conceptualmente trasladadas a la cima de su alcance y 
-    pueden ser utilizadas por todo el código en ese alcance.
-*/
-
-
 
