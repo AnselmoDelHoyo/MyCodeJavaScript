@@ -901,4 +901,64 @@ console.log("Adios");
 // console.log(gallina() + " vino primero.")
 // -> ??
 
+// Argumentos Opcionales
+
+// El siguiente código está permitido y se ejecuta sin ningún problema:
+function cuadrado3(x) { return x * x; }
+console.log(cuadrado3(4, true, "erizo"));
+// -> 16
+
+/*
+    Definimos cuadrado con solo un parámetro. Sin embargo, cuando lo llamamos
+    con tres, el lenguaje no se queja. Este ignora los argumentos extra y calcula
+    el cuadrado del primero.
+
+    JavaScript es de extremadamente mente-abierta sobre la cantidad de argumentos
+    que puedes pasar a una función. Si pasa demasiados, los adicionales
+    son ignorados. Si pasas muy pocos, a los parámetros faltantes se les asigna
+    el valor undefined.
+
+    La ventaja es que este comportamiento se puede usar para permitir que
+    una función sea llamada con diferentes cantidades de argumentos. Por ejemplo,
+    esta función "menos" intenta imitar al operador - actuando ya sea en uno o dos
+    argumentos.
+*/
+
+function menos(a, b) {
+    if (b == undefined) return -a;
+    else return a - b;
+}
+
+console.log(menos(10));
+// -> -10
+console.log(menos(10, 5));
+// -> 5
+
+/*
+    Si se escribe un operador = después un parámetro, seguido de una expresión,
+    el valor de esa expresión reemplazará al argumento cuando este no sea dado.
+*/
+
+function potencia(base, exponente = 2) {
+    let resultado = 1;
+    for (let cuenta = 0; cuenta < exponente; cuenta++) {
+        resultado *= base;
+    }
+    return resultado;
+}
+
+console.log(potencia(4)); // -> 16
+console.log(potencia(2, 6)); // -> 64
+
+/*
+    Existe una forma en el que el cuerpo de una función
+    puede obtener una lista de todos los argumentos que son pasados.
+    Esto es útil porque hace posible que una función acepte cualquier
+    cantidad de argumentos. Por ejemplo, console.log hace esto, muestra
+    en la consola todos los valores que se le den.
+*/
+
+console.log("C", "O", 2);
+// -> C O 2
+
 
