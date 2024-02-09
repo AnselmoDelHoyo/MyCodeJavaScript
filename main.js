@@ -851,3 +851,54 @@ const bocina = () => {
     console.log("Toot");
 };
 
+// La Pila de Llamadas
+
+function saludar(quien) {
+    console.log("Hola " + quien);
+}
+saludar("Harry");
+console.log("Adios");
+
+/* 
+    Un recorrido por este programa es más o menos así:
+
+    no en una función
+        en saludar
+            en console.log
+        en saludar
+    no en una función
+        en console.log
+    no en una función
+*/
+
+/*
+    Ya que una función tiene que regresar al lugar donde fue llamada cuando esta
+    retorna, la computadora debe recordar el contexto de donde sucedío la llamada.
+    En un caso, console.log tiene que volver a al función saludar cuando está lista.
+    En el otro caso, vuelve al final del programa.
+
+    El lugar donde la computadora almacena este contexto es la pila de llamadas.
+    Cada vez que se llama a una función, el contexto actual es almacenado en la
+    parte superior de esta “pila”. Cuando una función retorna, elimina el contexto
+    superior de la pila y lo usa para continuar la ejecución.
+
+    Almacenar esta pila requiere espacio en la memoria de la computadora.
+    Cuando la pila crece demasiado grande, la computadora fallará con un mensaje como “fuera de espacio de pila” o “demasiada recursividad”. El siguiente
+    código ilustra esto haciendo una pregunta realmente difícil a la computadora,
+    que causara un ir y venir infinito entre las dos funciones. Mejor dicho, sería
+    infinito, si la computadora tuviera una pila infinita. Como son las cosas, nos
+    quedaremos sin espacio, o “explotaremos la pila”.
+*/
+
+// function gallina() {
+//     return huevo();
+// }
+
+// function huevo() {
+//     return gallina();
+// }
+
+// console.log(gallina() + " vino primero.")
+// -> ??
+
+
