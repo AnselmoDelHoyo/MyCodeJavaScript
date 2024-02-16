@@ -961,4 +961,38 @@ console.log(potencia(2, 6)); // -> 64
 console.log("C", "O", 2);
 // -> C O 2
 
+// Cierre
+
+// ¿Qué sucede con las vinculaciones locales cuando la llamada de función
+// que las creó ya no está activa?
+
+function envolverValor(n) {
+    let local = n;
+    return () => local;
+}
+
+let envolver1 = envolverValor(1);
+let envolver2 = envolverValor(2);
+
+console.log(envolver1()); // -> 1
+console.log(envolver2()); // -> 2
+
+
+/*
+    Poder hacer referencia a una instancia específica de una 
+    vinculación local en un alcance encerrado, se llama cierre.
+*/
+
+function multiplicador(factor) {
+    return numero => numero * factor;
+}
+
+let duplicar = multiplicador(2);
+
+console.log(duplicar(5)); // -> 10
+
+/*
+    La vinculación explícita local del ejemplo envolverValor no es
+    realmente necesaria ya que un parámetro es en sí mismo una vinculación local.
+*/
 
