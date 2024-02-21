@@ -996,3 +996,102 @@ console.log(duplicar(5)); // -> 10
     realmente necesaria ya que un parámetro es en sí mismo una vinculación local.
 */
 
+// Recursión
+
+/*
+    Está bien que una función se llame a sí misma, simpre que no lo haga tanto
+    que desborde la pila. Una función que se llama a si misma es llamada recursiva.
+    La recursión permite que algunas funciones sean escritas en un estilo diferente.
+    Por ejemplo esta implementación alternativa de potencia:
+*/
+
+function potenciaRecursiva(base, exponente) {
+    if (exponente == 0) {
+        return 1;
+    } else {
+        return base * potenciaRecursiva(base, exponente - 1);
+    }
+}
+
+console.log(potenciaRecursiva(2, 3)); // -> 8
+
+/*
+    El dilema de la velocidad versus elegancia es interesante. Puedes verlo como una
+    especie de compromiso entre accesibilidad-humana y accesibilidad-maquina.
+    Casi cualquier programa se puede hacer más rápido haciendolo más grande y
+    complicado. El programador tiene que decidir acerca de cual es un equilibrio
+    apropiado.
+*/
+
+/*
+    La recursión no siempre es solo una alternativa ineficiente a los ciclos. Al-
+    gunos problemas son realmente más fáciles de resolver con recursión que con
+    ciclos. En la mayoría de los casos, estos son problemas que requieren
+    explorar o procesar varias "ramas", cada una de las cuales podría ramificarse de nuevo
+    en aún más ramas.
+*/
+
+/*
+    Considera este acertijo: comenzando desde el número 1 y repetidamente
+    agregando 5 o multiplicando por 3, una cantidad infinita de números nuevos pueden
+    ser producidos. ¿Cómo escribirías una función que, dado un número, intente
+    encontrar una secuencia de tales adiciones y multiplicaciones que produzca ese número?
+
+    Por ejemplo, se puede llegar al número 13 multiplicando primero por 3 y luego
+    agregando 5 dos veces, mientrar que el número 15 no puede ser alcanzado de ninguna manera.
+    
+    Aquí hay una solución recursiva:
+
+*/
+
+function encontrarSolucion (objetivo) {
+    function encontrar(actual, historia) {
+        if (actual == objetivo) {
+            return historia;
+        } else if (actual > objetivo) {
+            return null;
+        } else {
+            return encontrar(actual + 5, `(${historia} + 5)`) ||
+                encontrar(actual * 3, `(${historia} * 3)`);
+        }
+    }
+    return encontrar(1, "1");
+}
+
+console.log(encontrarSolucion(24));
+
+/*
+    Para comprender mejor cómo esta función produce el efecto que estamos bus-
+    cando, veamos todas las llamadas a encontrar que se hacen cuando buscamos
+    una solución para el número 13.
+
+    encontrar(1, "1")
+        encontrar(6, "(1 + 5)")
+            encontrar(11, "((1 + 5) + 5)")
+                encontrar(16, "(((1 + 5) + 5) + 5)")
+                    muy grande
+                encontrar(33, "(((1 + 5) + 5) * 3)")
+                    muy grande
+            encontrar(18, "((1 + 5) * 3)")
+                muy grande
+        encontrar(3, "(1 * 3)")
+            encontrar(8, "((1 * 3) + 5)")
+                encontrar(13, "(((1 * 3) + 5) + 5)")
+                    ¡encontrado!
+
+        La indentación indica la profundidad de la pila de llamadas. La primera vez
+    que encontrar es llamada, comienza llamandose a sí misma para explorar la
+    solución que comienza con (1 + 5). Esa llamada hara uso de la recursión aún
+    más para explorar cada solución continuada que produzca un número menor
+    o igual a el número objetivo. Como no encuentra uno que llegue al objetivo,
+    retorna null a la primera llamada. Ahí el operador || genera la llamada que
+    explora (1 * 3) para que esta suceda. Esta búsqueda tiene más suerte—su
+    primera llamada recursiva, a través de otra llamada recursiva, encuentra al
+    número objetivo. Esa llamada más interna retorna un string, y cada uno de los
+    operadores || en las llamadas intermedias pasa ese string a lo largo, en última
+    instancia retornando la solución.
+*/
+
+
+
+
