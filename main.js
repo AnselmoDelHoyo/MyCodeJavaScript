@@ -1192,3 +1192,21 @@ imprimirInventarioGranja3(7, 16, 3);
     trabajo real de esta manera, solo estarás escribiendo código que nunca usarás.
 */
 
+// Funciones y efectos secundarios
+
+/*
+        Las Funciones se pueden dividir aproximadamente en aquellas que se llaman por sus
+    efectos secundarios y aquellas que son llamadas por su valor de retorno.
+    (Aunque definitivamente también es posible tener tanto efectos secundarios como
+    devolver un valor en una misma función).
+        La primera función auxiliar en el ejemplo de la granja, imprimirEtiquetaAlcochada,
+    se llama por su efecto secundario: imprime una línea. La segunda versión,
+    alcocharConCeros, se llama por su valor de retorno. No es coincidencia que la segunda
+    sea útil en más situaciones que la primera. Las funciones que crean valores son más fáciles
+    de combinar en nuevas formas que las funciones que directamente realizan efectos secundarios.
+        Una función pura es un tipo específico de función de producción de valores que no solo
+    no tiene efectos secundarios pero que tampoco depende de los efectos secundarios de otro
+    código, por ejemplo, no lee vinculciones globales cuyos valores puedan cambiar. Una función
+    pura tiene la propiedad agradable de que cuando se le llama con los mismos argumentos, siempre
+    produce el mismo valor (y no hace nada más).
+*/
