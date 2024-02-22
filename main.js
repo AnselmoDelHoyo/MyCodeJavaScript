@@ -1092,6 +1092,103 @@ console.log(encontrarSolucion(24));
     instancia retornando la solución.
 */
 
+// Funciones Crecientes
 
+/* 
+    Hay dos formas más o menos naturales para que las funciones sean introducidas
+    en los programas. La primera es que te encuentras escribiendo código muy similar
+    múltiples veces. La segunda forma es que encuentres que necesitas alguna funcionalidad
+    que aún no has escrito y parece que merece su propia función.
+*/
 
+/*
+    Veamos un ejemplo. Queremos escribir un programa que imprima dos números, los
+    números de vacas y pollos en una granja, con las palabras Vacas y Pollos después de ellos,
+    y ceros acolchados antes de ambos números para que siempre tengan tres dígitos de largo.
+
+    007 Vacas
+    011 Pollos
+
+    Esto pide una función de dos argumentos, el número de vacas y número de pollos. Vamos a programar.
+*/
+
+function imprimirInventarioGranja1(vacas, pollos) {
+    let stringVaca = String(vacas);
+    while (stringVaca.length < 3) {
+        stringVaca = "0" + stringVaca;
+    }
+    console.log(`${stringVaca} Vacas`);
+    let stringPollos = String(pollos);
+    while (stringPollos.length < 3) {
+        stringPollos = "0" + stringPollos;
+    }
+    console.log(`${stringPollos} Pollos`);
+}
+imprimirInventarioGranja1(7, 11);
+
+/*
+        Escribir .length después de una expresión de string nos dará la longitud de
+    dicho string. Por lo tanto, los ciclos while seguiran sumando ceros delante del
+    string de numeros hasta que este tenga al menos tres caracteres de longitud.
+        Misión cumplida! Pero justo cuando estamos por enviar el código a la agricultora 
+    (junto con una considerable factura), ella nos llama y nos dice que ella también 
+    comenzó a criar cerdos, y que si no podríamos extender el software para imprimir 
+    cerdos también?
+        Claro que podemos. Pero justo cuando estamos en el proceso de copiar y
+    pegar esas cuatro líneas una vez más, nos detenemos y reconsideramos. Tiene
+    que haber una mejor manera. Aquí hay un primer intento:
+*/
+
+function imprimirEtiquetaAlcochadaConCeros(numero, etiqueta) {
+    let stringNumero = String(numero);
+    while (stringNumero.length < 3) {
+        stringNumero = "0" + stringNumero;
+    }
+    console.log(`${stringNumero} ${etiqueta}`);
+}
+
+function imprimirInventarioGranja2(vacas, pollos, cerdos) {
+    imprimirEtiquetaAlcochadaConCeros(vacas, "Vacas");
+    imprimirEtiquetaAlcochadaConCeros(pollos, "Pollos");
+    imprimirEtiquetaAlcochadaConCeros(cerdos, "Cerdos");
+}
+
+imprimirInventarioGranja2(7, 11, 3);
+
+/*
+        Funciona! Pero ese nombre, imprimirEtiquetaAlcochadaConCeros, es un
+    poco incómodo. Combina tres cosas, impresión, alcochar con ceros y añadir
+    una etiqueta en una sola función.
+        En lugar de sacar la parte repetida de nuestro programa al por mayor,
+    intentemos elegir un solo concepto.
+*/
+
+function alcocharConCeros(numero, amplitud) {
+    let string = String(numero);
+    while (string.length < amplitud) {
+        string = "0" + string;
+    }
+    return string;
+}
+
+function imprimirInventarioGranja3(vacas, pollos, cerdos) {
+    console.log(`${alcocharConCeros(vacas, 3)} Vacas`);
+    console.log(`${alcocharConCeros(pollos, 3)} Pollos`);
+    console.log(`${alcocharConCeros(cerdos, 3)} Cerdos`);
+}
+
+imprimirInventarioGranja3(7, 16, 3);
+
+/*
+    Una Función con un nombre agradable y obvio como alcocharConCeros hace
+    que sea más fácil de entender lo que hace para alguien que lee el código. Y
+    tal función es útil en situaciones más allá de este programa en específico. Por
+    ejemplo, podrías usarla para ayudar a imprimir tablas de números en una manera
+    alineada.
+
+    Un principio útil es no agregar mucho ingenio a menos que estes absolutamente seguro
+    de que lo vas a necestitar. Puede ser tentador escribir "frameworks" generalizados
+    para cada funcionalidad que encuentres. Resiste ese impulso. No realizarás ningún
+    trabajo real de esta manera, solo estarás escribiendo código que nunca usarás.
+*/
 
