@@ -1210,3 +1210,33 @@ imprimirInventarioGranja3(7, 16, 3);
     pura tiene la propiedad agradable de que cuando se le llama con los mismos argumentos, siempre
     produce el mismo valor (y no hace nada más).
 */
+
+// Resumen
+
+/*
+        Este capítulo enseña a escribir tus propias funciones. La palabra clave
+    function, cuando se usa como una expresión, puede crear un valor de función. Cuando se usa como 
+    una declaración, se puede usar para declarar una vinculación y darle una función como su valor. 
+    Las funciones de flecha son otra forma más de crear funciones.
+
+    // Define f para sostener un valor de función
+    const f = function(a) {
+        console.log(a + 2);
+    };
+    // Declara g para ser una función
+    function g(a, b) {
+        return a * b * 3.5;
+    }
+    // Un valor de función menos verboso
+    let h = a => a % 3;
+
+        Un aspecto clave en programación para comprender a las funciones es comprender los alcances. 
+    Cada bloque crea un nuevo alcance. Los parámetros y vinculaciones declaradas en un determinado 
+    alcance son locales y no son visibles desde el exterior. Vinculaciones declaradas con var se 
+    comportan de manera diferente, y terminan en el alcance de la función más cercana o en el alcance 
+    global.
+        Separar las tareas que realiza tu programa en diferentes funciones es util.
+    No tendrás que repetirte tanto, y las funciones pueden ayudar a organizar un
+    programa agrupando el código en piezas que hagan cosas especificas.
+*/
+
