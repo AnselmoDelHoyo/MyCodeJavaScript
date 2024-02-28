@@ -2,12 +2,13 @@
   "name": "mycodejavascript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "exercise-2-1": "node exercises/chapter-2/exercise-1",
     "exercise-2-2": "node exercises/chapter-2/exercise-2",
-    "exercise-2-3": "node exercises/chapter-2/exercise-3"
+    "exercise-2-3": "node exercises/chapter-2/exercise-3",
+    "exercise-3-1": "node exercises/chapter-3/exercise-1"
   },
   "keywords": [],
   "author": "",
