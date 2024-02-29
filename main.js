@@ -1,4 +1,8 @@
-// ====== Capítulo 1: Valores, Tipos y Operadores
+
+
+// ===========================================
+// = Capítulo 1: Valores, Tipos y Operadores =
+// ===========================================
 
 // ====== Valores
 
@@ -24,11 +28,11 @@
 
 360
 
-// - Número Decimal
+// ====== Número Decimal
 
 9.81
 
-// - Notación científica
+// ====== Notación científica
 
 // 2.998e8
 
@@ -311,8 +315,10 @@ console.log("Agnes" || "usuario") // -> Agnes
     un tercer valor.
 */
 
-// ====== Capítulo 2: Estructura de un Programa
 
+// =========================================
+// = Capítulo 2: Estructura de un Programa =
+// =========================================
 
 // ====== Expresiones y Declaraciones
 
@@ -420,7 +426,7 @@ console.log(saludo + nombre); // -> Hola Ayda
     si estás tratando de definir una palabra reservada.
 */
 
-// El Entorno
+// ====== El Entorno
 
 /*
     La colección de vinculaciones y sus valores que existen en un momento dado
@@ -436,7 +442,7 @@ console.log(saludo + nombre); // -> Hola Ayda
 
 // >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Entrada
 
-// Flujo de Control
+// ====== Flujo de Control
 
 /*
     Cuando tu programa contiene más de una declaración, las declaraciones se
@@ -452,11 +458,11 @@ console.log(saludo + nombre); // -> Hola Ayda
     llamadas String y Boolean que convierten valores a esos tipos.
 */
 
-// Flujo de control en línea recta:
+// ====== Flujo de control en línea recta:
 
 // =======================>
 
-// Ejecución Condicional
+// ====== Ejecución Condicional
 
 /*
     No todos los programas son caminos rectos. Podemos, por ejemplo, querer
@@ -512,7 +518,7 @@ if (1 + 1 == 2) console.log("Es verdad"); // -> Es verdad
             |====> |=====>
 */
 
-// Ciclos While y Do
+// ====== Ciclos While y Do
 
 /* 
     Considera un programa que muestra todos los números pares de 0 a 12. Una
@@ -596,7 +602,7 @@ if (false != true) {
     }
 }
 
-// Ciclos For
+// ====== Ciclos For
 
 /*
     Existe un patrón muy común a la hora de crear ciclos. Primero una vinculación
@@ -629,7 +635,7 @@ for (let contador = 0; contador < 10; contador++) {
 }
 console.log(resultadoPotencia); // -> 1024
 
-// Rompiendo un Ciclo
+// ====== Rompiendo un Ciclo
 
 /*
     Hacer que la condición del ciclo produzca false no es la única forma
@@ -654,7 +660,7 @@ for (let actual = 20; ; actual = actual + 1) {
     el control salta afuera del cuerpo y continúa con la siguiente iteración del ciclo.
 */
 
-// Actualizando Vinculaciones de Manera Sucinta
+// ====== Actualizando Vinculaciones de Manera Sucinta
 
 /*
     Un programa a menudo necesita "actualizar" una vinculación para mantener un valor
@@ -682,7 +688,7 @@ for (let numero = 0; numero <= 12; numero += 2) {
     contador++ y contador --.
 */
 
-// Despachar una valor con Switch
+// ====== Despachar una valor con Switch
 
 // No es común que el código se vea así:
 
@@ -722,7 +728,7 @@ switch (clima) {
     hasta que llegue a una declaración break.
 */
 
-// Capitalización
+// ====== Capitalización
 
 /*
     Los nombres de vinculaciones no pueden contener espacios, sin embargo, a
@@ -744,7 +750,7 @@ pequeñaTortugaVerde; // camelCase
     como un constructor.
 */
 
-// Comentarios
+// ====== Comentarios
 
 /*
     Un comentario es una pieza de texto que es parte de un programa pero que
@@ -775,7 +781,7 @@ pequeñaTortugaVerde; // camelCase
 
 const miNumero = 11213;
 
-// Resumen
+// ====== Resumen
 
 /*
     Un programa está construido a partir de declaraciones, las
@@ -798,7 +804,10 @@ const miNumero = 11213;
     Tal llamada a función es una expresión, y puede producir un valor.
 */
 
-// ====== Capítulo 3: Funciones
+
+// =========================
+// = Capítulo 3: Funciones =
+// =========================
 
 /*
     Las funciones son el pan y la mantequilla de la programación en JavaScript.
@@ -851,7 +860,7 @@ const bocina = () => {
     console.log("Toot");
 };
 
-// La Pila de Llamadas
+// ====== La Pila de Llamadas
 
 function saludar(quien) {
     console.log("Hola " + quien);
@@ -901,7 +910,7 @@ console.log("Adios");
 // console.log(gallina() + " vino primero.")
 // -> ??
 
-// Argumentos Opcionales
+// ====== Argumentos Opcionales
 
 // El siguiente código está permitido y se ejecuta sin ningún problema:
 function cuadrado3(x) { return x * x; }
@@ -961,7 +970,7 @@ console.log(potencia(2, 6)); // -> 64
 console.log("C", "O", 2);
 // -> C O 2
 
-// Cierre
+// ====== Cierre
 
 // ¿Qué sucede con las vinculaciones locales cuando la llamada de función
 // que las creó ya no está activa?
@@ -996,7 +1005,7 @@ console.log(duplicar(5)); // -> 10
     realmente necesaria ya que un parámetro es en sí mismo una vinculación local.
 */
 
-// Recursión
+// ====== Recursión
 
 /*
     Está bien que una función se llame a sí misma, simpre que no lo haga tanto
@@ -1041,7 +1050,6 @@ console.log(potenciaRecursiva(2, 3)); // -> 8
     agregando 5 dos veces, mientrar que el número 15 no puede ser alcanzado de ninguna manera.
     
     Aquí hay una solución recursiva:
-
 */
 
 function encontrarSolucion (objetivo) {
@@ -1092,7 +1100,7 @@ console.log(encontrarSolucion(24));
     instancia retornando la solución.
 */
 
-// Funciones Crecientes
+// ====== Funciones Crecientes
 
 /* 
     Hay dos formas más o menos naturales para que las funciones sean introducidas
@@ -1192,7 +1200,7 @@ imprimirInventarioGranja3(7, 16, 3);
     trabajo real de esta manera, solo estarás escribiendo código que nunca usarás.
 */
 
-// Funciones y efectos secundarios
+// ====== Funciones y efectos secundarios
 
 /*
         Las Funciones se pueden dividir aproximadamente en aquellas que se llaman por sus
@@ -1211,7 +1219,7 @@ imprimirInventarioGranja3(7, 16, 3);
     produce el mismo valor (y no hace nada más).
 */
 
-// Resumen
+// ====== Resumen
 
 /*
         Este capítulo enseña a escribir tus propias funciones. La palabra clave

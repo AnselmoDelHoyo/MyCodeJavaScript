@@ -2,7 +2,7 @@
 // >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Entrada
 
 
-// Funciones
+// ====== Funciones
 
 /*
     Muchos de los valores proporcionados por el entorno predeterminado tienen
@@ -24,7 +24,7 @@ prompt("Introducir contraseña");
     pueden necesitar un número diferente o diferentes tipos de argumentos.
 */
 
-// Función "console.log()"
+// ====== Función "console.log()"
 
 console.log("%cSaludos desde la consola...", "background:#000;color:#ff0;padding:10px 25px;")
 
@@ -34,7 +34,7 @@ console.log("%cSaludos desde la consola...", "background:#000;color:#ff0;padding
     dispositivo de salida de texto.
 */
 
-// Valores de Retorno
+// ====== Valores de Retorno
 
 /*
     Mostrar un cuadro de diálogo o escribir texto en la pantalla es un efecto secundario.
@@ -56,4 +56,4 @@ console.log(Math.max(2, 4)); // -> 4
 
 console.log(Math.min(2, 4) + 100) // -> 102
 
-// >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Paso a "index.js"
+// >>>>>> >>>>>> >>>>>> >>>>>> >>>>>> Paso a "main.js"
