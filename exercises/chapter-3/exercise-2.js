@@ -33,5 +33,3 @@ console.log(esPar(50));
 console.log(esPar(75));
 console.log(esPar(-1));
 
-
-
