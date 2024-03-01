@@ -1260,7 +1260,7 @@ imprimirInventarioGranja3(7, 16, 3);
     objetos para construir estructuras más complejas.
 */
 
-// El Hombre Ardilla
+// ====== El Hombre Ardilla
 
 /*
         De vez en cuando, generalmente entre las ocho y las diez de la noche, Jacques
@@ -1287,7 +1287,7 @@ imprimirInventarioGranja3(7, 16, 3);
     información.
 */
 
-// Conjunto de Datos
+// ====== Conjunto de Datos
 
 /*
     JavaScript proporciona un tipo de datos específicamente
@@ -1306,3 +1306,34 @@ console.log(listaDeNumeros[2 - 1]); // -> 3
     con otra expresión dentro de ellos, buscará al elemento en la expresión de
     la izquierda que corresponda al índice dado por la expresión entre corchetes.
 */
+
+// ====== Propiedades
+
+/*
+    Casi todos los valores de JavaScript tienen propiedades. Las excepciones
+    son null y undefined. Si intentas acceder a una propiedad en alguno de estos
+    no-valore, obtienes un error.
+
+    null.length;
+    // -> TypeError: null has no properties.
+
+    Las dos formas principales de acceder a las propiedades en JavaScript son con
+    un punto y con corchetes. Tanto valor.x como valor[x] acceden una propiedad
+    en valor, pero no necesariamente la misma propiedad. La diferencia está en
+    cómo se interpreta x.
+        Entonces, si sabes que la propiedad que te interesa se llama color, dices
+    valor.color. Si quieres extraer la propiedad nombrado por el valor mantenido en
+    la vinculación i, dices valor[i]. Los nombre de las propiedades son strings.
+    Pueden ser cualquier string, pero la notación de puntos solo funciona con nombres
+    que se vean como nombre de vinculaciones válidos. Entonces, si quieres acceder a
+    una propiedad llamada 2 o Juan Perez, debes usar corchetes: valor[2] o
+    valor["Juan Perez"].
+        Los elementos en un array son almacenados como propiedades del array,
+    usando números como nombres de propiedad.
+        La propiedad length de un array nos dice cuántos elementos este tiene. Este
+    nombre de propidedad es un nombre de vinculación válido, y sabemos su nombre en avance,
+    así que para encontrar la longitud de un array, normalmente escribes
+    array.length ya que es más fácil de escribir que array["length"].
+*/
+
+
