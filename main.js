@@ -1248,3 +1248,61 @@ imprimirInventarioGranja3(7, 16, 3);
     programa agrupando el código en piezas que hagan cosas especificas.
 */
 
+
+// ======================================================
+// = Capítulo 4: Estructuras de Datos: Objetos y Arrays =
+// ======================================================
+
+/*
+    Los números, los booleanos y los strings son los átomos que constituyen
+    las estructuras de datos. Sin embargo, muchos tipos de información requieren
+    más de un átomo. Los objetos nos permiten agrupar valores, incluidos otros
+    objetos para construir estructuras más complejas.
+*/
+
+// El Hombre Ardilla
+
+/*
+        De vez en cuando, generalmente entre las ocho y las diez de la noche, Jacques
+    se encuentra a si mismo transformándose en un pequeño roedor peludo con una
+    cola espesa.
+        Por un lado, Jacques está muy contento de no tener la licantropía clásica.
+    Convertirse en una ardilla causa menos problemas que convertirse en un lobo.
+    En lugar de tener que preocuparse por accidentalmente comerse al vecino (eso
+    sería incómodo), le preocupa ser comido por el gato del vecino. Después de
+    dos ocasiones en las que se despertó en una rama precariamente delgada de la
+    copa de un roble, desnudo y desorientado, Jacques se ha dedicado a bloquear
+    las puertas y ventanas de su habitación por la noche y pone algunas nueces en el 
+    piso para mantenerse ocupado.
+        Eso se ocupa de los problemas del gato y el árbol. Pero Jacques preferiría
+    deshacerse de su condición por completo. Las ocurrencias irregulares de la
+    transformación lo hacen sospechar que estas podrían ser provocadas por algo
+    en especifico. Por un tiempo, creyó que solo sucedia en los días en los que
+    el había estado cerca de árboles de roble. Pero evitar los robles no detuvo el
+    problema.
+        Cambiando a un enfoque más científico, Jacques ha comenzado a mantener
+    un registro diario de todo lo que hace en un día determinado y si su forma cambio. Con esta información el espera reducir las condiciones que desencadenan
+    las transformaciones.
+    Lo primero que el necesita es una estructura de datos para almacenar esta
+    información.
+*/
+
+// Conjunto de Datos
+
+/*
+    JavaScript proporciona un tipo de datos específicamente
+    para almacenar secuencias de valores. Es llamado array y está escrito
+    como una lista de valores entre corchetes, separados por comas.
+*/
+
+let listaDeNumeros = [2, 3, 5, 7, 11];
+console.log(listaDeNumeros[2]); // -> 5
+console.log(listaDeNumeros[0]); // -> 2
+console.log(listaDeNumeros[2 - 1]); // -> 3
+
+/*
+    La notación para llegar a los elementos dentro de un array también utiliza
+    corchetes. Un par de corchetes inmediatamente después de una expresión,
+    con otra expresión dentro de ellos, buscará al elemento en la expresión de
+    la izquierda que corresponda al índice dado por la expresión entre corchetes.
+*/
