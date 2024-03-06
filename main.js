@@ -1373,3 +1373,108 @@ console.log(secuencia); // -> [1, 2, 3, 4]
     agregó de último se elimine primero.
 */
 
+// ====== Objetos
+
+/*
+        De vuelta al Hombre-Ardilla. Un conjunto de entradas diarias puede ser representado
+    como un array. Pero estas entradsa no consisten en solo un número o un string, cada
+    entrada necesita almacenar una lista de actividades y un valor booleano que indica si
+    Jacques se convirtió en una ardilla o no. Idealmente, nos gustaría agrupar estos en un
+    solo valor y luego agrupar estos valores en un array de registro de entradas.
+        Las valores del tipo objeto son colecciones arbitrarias de propiedades. Una forma de
+    crear un objeto es mediante el uso de llaves como una expresión.
+*/
+
+let dia1 = {
+    ardilla: false,
+    eventos: ["trabajo", "toque un arbol", "pizza", "salir a correr"]
+}
+console.log(dia1.ardilla); // -> false
+console.log(dia1.lobo); // -> undefined
+dia1.lobo = false;
+console.log(dia1.lobo);// -> false
+
+/*
+    Dentro de las llaves, hay una lista de propiedades separadas por coma,
+    cada propiedad tiene un nombre seguido de dos puntos y un valor. Cuando
+    un objeto está escrito en varias líneas, indentar como en el ejemplo ayuda
+    con la legibilidad. Las propiedades cuyos nombre no sean nombres válidos de
+    vinculaciones o números válidos deben estar entre comillas.
+*/
+
+let descripciones = {
+    trabajo: "Fui a trabajar",
+    "toque un arbol": "Toque un arbol"
+}
+
+/*
+        Esto significa que las llaves tienen dos significados en JavaScript. Al comienzo
+    de una declaración, comienzan un bloque de declaraciones.En cualquier otra posición,
+    describen un objeto.
+
+        Para volver brevemente a nuestro modelo de vinculaciones como tentáculos. Las vinculaciones
+    de propiedad son similares. Ellas agarran valores, pero otras vinculaciones y propiedades
+    pueden estar agarrando esos mismos valores. Puedespensar en los objetos como pulpos
+    con cualquier cantidad de tentáculos, cada una de los cuales tiene un nombre tatuado en él.
+    
+        El operador delete ("eliminar") corta un tentáculo de dicho pulpo. Es un operador unario
+    que, cuando se aplica a la propiedad de un objeto, eliminará la propiedad nombrada de dicho
+    objeto. Esto no es algo que hagas todo el tiempo, pero es posible.
+*/
+
+let unObjeto = {izquierda: 1, derecha: 2};
+console.log(unObjeto.izquierda); // -> 1
+delete unObjeto.izquierda;
+console.log(unObjeto.izquierda); // -> undefined
+console.log("izquierda" in unObjeto); // -> false
+console.log("derecha" in unObjeto); // -> true
+
+/*
+        El operador binario in (“en”), cuando se aplica a un string y un objeto, te
+    dice si ese objeto tiene una propiedad con ese nombre. La diferencia entre
+    darle un valor de undefined a una propiedad y eliminarla realmente es que,
+    en el primer caso, el objeto todavía tiene la propiedad (solo que no tiene un
+    valor muy interesante), mientras que en el segundo caso la propiedad ya no
+    está presente e in retornara false.
+*/
+
+/*
+        Para saber qué propiedades tiene un objeto, puedes usar la función Object.keys.
+    Le das un ojeto y devuelve un array de strings, los nombres de las propiedades del
+    objeto.
+*/
+
+console.log(Object.keys({x: 0, y: 0, z: 2})); // -> ["x", "y", "z"]
+
+/*
+    Hay una función Object.assign que copia todas las propiedades de un objeto a otro.
+*/
+
+let objetoA = {a: 1, b: 2};
+Object.assign(objetoA, {b: 3, c: 4});
+console.log(objetoA); // -> {a: 1, b: 3, c: 4}
+
+/*
+        Los arrays son, entonces, solo un tipo de objeto especializado para almacenar
+    secuencias de cosas. Si evalúas typeof [], este produce "object". Podrias
+    imaginarlos como pulpos largos y planos con todos sus tentáculos en una fila
+    ordenada, etiquetados con números.
+*/
+
+// Representaremos el diario de Jacques como un array de objetos.
+
+let diario = [
+    {
+        eventos: ["trabajo", "toque un arbol", "pizza", "sali a correr", "television"],
+        ardilla: false
+    },
+    {
+        eventos: ["trabajo", "helado", "coliflor", "lasaña", "toque un arbol", "me cepille los dientes"],
+        ardilla: false
+    },
+    {
+        eventos: ["fin de semana", "monte la bicicleta", "descanso", "nueces", "cerveza"],
+        ardilla: true
+    },
+    /* y asi sucesivamente... */
+];
