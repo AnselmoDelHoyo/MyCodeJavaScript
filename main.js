@@ -1336,4 +1336,40 @@ console.log(listaDeNumeros[2 - 1]); // -> 3
     array.length ya que es más fácil de escribir que array["length"].
 */
 
+// ====== Métodos
+
+/*
+    Ambos objetos de string y array contienen, además de la propiedad length,
+    una serie de propiedaes que tienen valores de función.
+*/
+
+let ouch = "Ouch";
+console.log(typeof ouch.toUpperCase); // -> function
+console.log(ouch.toUpperCase()); // -> OUCH
+
+/*
+        Cada string tiene una propiedad toUpperCase ("a mayúsculas"). Cuando se llame, regresará
+    una copia del string en la que todas las letras han sido convertidas a
+    mayúsculas. También hay toLowerCase("a minúscula"), que hace lo contrario.
+        Las propiedades que contienen funciones generalmente son llamadas métodos del valor al
+    que pertenecen. Como en, "toUpperCase es un método de string".
+*/
+
+// Este ejemplo demuestra dos métodos que puedes usar para manipular arrays:
+
+let secuencia = [1, 2, 3];
+secuencia.push(4);
+secuencia.push(5);
+console.log(secuencia); // -> [1, 2, 3, 4, 5]
+console.log(secuencia.pop()); // - 5
+console.log(secuencia); // -> [1, 2, 3, 4]
+
+/*
+        El método push agrega valores al final de un array, y el el método pop hace
+    lo contrario, eliminando el último valor en el array y retornandolo.
+        Estos nombres algo tontos son los términos tradicionales para las operaciones
+    en una pila. Una pila, en programación, es un estructura de datos que te permite
+    agregar valores a ella y volverlos a sacar en el orden opuesto, de modo que lo que se
+    agregó de último se elimine primero.
+*/
 
