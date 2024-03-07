@@ -1377,7 +1377,7 @@ console.log(secuencia); // -> [1, 2, 3, 4]
 
 /*
         De vuelta al Hombre-Ardilla. Un conjunto de entradas diarias puede ser representado
-    como un array. Pero estas entradsa no consisten en solo un número o un string, cada
+    como un array. Pero estas entradas no consisten en solo un número o un string, cada
     entrada necesita almacenar una lista de actividades y un valor booleano que indica si
     Jacques se convirtió en una ardilla o no. Idealmente, nos gustaría agrupar estos en un
     solo valor y luego agrupar estos valores en un array de registro de entradas.
@@ -1478,3 +1478,62 @@ let diario = [
     },
     /* y asi sucesivamente... */
 ];
+
+// ====== Mutabilidad
+
+/*
+        Los valores de objetos pueden ser modificados. Los tipos de valores
+    discutidos en capítulos anteriores, como número, strings y booleanos, son
+    todos inmutables, es imposible cambiar los valores de aquellos tipos. Puedes
+    combinarlos y obtener nuevos valores a partir de ellos, pero cuando tomas un
+    valor de string específico, ese valor siempre será el mismo. El texto dentro
+    de él no puede ser cambiado. Si tienes un string que contiene "gato", no es posible
+    que otro código cambie un carácter en tu string para que deletree "rato".
+        Los objetos funcionan de una manera diferente. Tu puedes cambiar sus propiedades,
+    haciendo que un único valor de objeto tenga contenido diferente en diferentes momentos.
+        Cuando tenemos dos números, 120 y 120, podemos considerarlos el mismo número
+    precisamente, ya sea que hagan referencia o no a los mismos bits físicos. Con los
+    objetos, hay un diferencia entre tener dos referencias a el mismo objeto y tener dos
+    objetos diferentes que contengan las mismas propiedades. Considera el siguiente código:
+*/
+
+let objeto1 = {valor: 10};
+let objeto2 = objeto1;
+let objeto3 = {valor: 10};
+
+console.log(objeto1 == objeto2); // -> true
+console.log(objeto1 == objeto3); // -> false
+
+objeto1.valor = 15;
+console.log(objeto2.valor); // -> 15
+console.log(objeto3.valor); // -> 10
+
+/*
+        Las vinculaciones objeto1 y objeto2 agarran el mismo objeto, que es la
+    razon por la cual cambiar objeto1 también cambia el valor de objeto2. Se dice
+    que tienen la misma identidad. La vinculación objeto3 apunta a un objeto
+    diferente, que inicialmente contiene las mismas propiedades que objeto1 pero
+    vive una vida separada.
+        Las vinculaciones también pueden ser cambiables o constantes, pero esto es
+    independiente de la forma en la que se comportan sus valores. Aunque los
+    valores numéricos no cambian, puedes usar una vinculación let para hacer un
+    seguimiento de un número que cambia al cambiar el valor al que apunta la
+    vinculación. Del mismo modo, aunque una vinculación const a un objeto no
+    pueda ser cambiada en si misma y continuará apuntando al mismo objeto, los
+    contenidos de ese objeto pueden cambiar.
+*/
+
+const puntuación = {visitantes: 0, locales: 0};
+// Esto esta bien
+puntación.visitante = 1;
+// Esto no esta permitido
+puntación = {visitantes: 1, locales: 1};
+
+/*
+    Cuando comparas objetos con el operador == en JavaScript, este los compara
+    por identidad: producirá true solo si ambos objetos son precisamente el mismo valor.
+    Comparar diferentes objetos retornará false, incluso si tienen propiedades
+    idénticas. No hay una operación de comparación "profunda" incorporada en JavaScript,
+    que compare objetos por contenidos, pero es posible escribir una (que es un ejercicio
+    al final del capítulo).
+*/
