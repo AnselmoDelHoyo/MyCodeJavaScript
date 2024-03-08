@@ -4,6 +4,8 @@
 // = Capítulo 1: Valores, Tipos y Operadores =
 // ===========================================
 
+const JOURNAL = require("./journal")
+
 // ====== Valores
 
 /*
@@ -1523,11 +1525,11 @@ console.log(objeto3.valor); // -> 10
     contenidos de ese objeto pueden cambiar.
 */
 
-const puntuación = {visitantes: 0, locales: 0};
+const puntuacion = {visitantes: 0, locales: 0};
 // Esto esta bien
-puntación.visitante = 1;
+puntuacion.visitantes = 1;
 // Esto no esta permitido
-puntación = {visitantes: 1, locales: 1};
+// puntuacion = {visitantes: 1, locales: 1};
 
 /*
     Cuando comparas objetos con el operador == en JavaScript, este los compara
@@ -1609,4 +1611,74 @@ añadirEntrada(["fin de semana", "monte la bicicleta", "descanso", "nueces", "ce
     dividendo) sería 1×76−4×9 = 40, y la parte inferior (el divisor) sería la raíz
     cuadrada de 5×85×10×80, o √340000. Esto da φ ≈ 0.069, que es muy pequeño.
     Comer pizza no parece tener influencia en las transformaciones.
+*/
+
+// ====== Calculando Correlación
+
+/*
+        Podemos representar una tabla de dos-por-dos en JavaScript con un array de
+    cuatro elementos ([76, 9, 4, 1]). También podríamos usar otras representaciones, como un array que contiene dos arrays de dos elementos ([[76, 9],
+    [4, 1]]) o un objeto con nombres de propiedad como "11" y "01", pero el
+    array plano es simple y hace que las expresiones que acceden a la tabla agradablemente cortas. Interpretaremos los índices del array como número binarios
+    de dos-bits , donde el dígito más a la izquierda (más significativo) se refiere a la
+    variable ardilla y el digito mas a la derecha (menos significativo) se refiere a la
+    variable de evento. Por ejemplo, el número binario 10 se refiere al caso en que
+    Jacques se convirtió en una ardilla, pero el evento (por ejemplo, “pizza”) no
+    ocurrió. Esto ocurrió cuatro veces. Y dado que el 10 binario es 2 en notación
+    decimal, almacenaremos este número en el índice 2 del array.
+        Esta es la función que calcula el coeficiente φ de tal array:
+*/
+
+function phi(tabla) {
+    return (tabla[3] * tabla[0] - tabla[2] * tabla[1]) /
+        Math.sqrt(
+            (tabla[2] + tabla[3]) *
+            (tabla[0] + tabla[1]) *
+            (tabla[1] + tabla[3]) *
+            (tabla[0] + tabla[2])
+        ); 
+}
+
+console.log(phi([76, 9, 4, 1]));
+// -> 0,068599434
+
+/*
+        Esta es una traducción directa de la fórmula φ a JavaScript. Math.sqrt es
+    la función de raíz cuadrada, proporcionada por el objeto Math en un entorno
+    de JavaScript estándar. Tenemos que sumar dos campos de la tabla para obtener
+    campos como n1. porque las sumas de filas o columnas no se almacenan
+    directamente en nuestra estructura de datos.
+        Jacques mantuvo su diario por tres meses. El conjunto de datos resultante
+    está disponible en la caja de arena para este capítulo(eloquentjavascript.net/
+    code#4), donde se almacena en la vinculación JOURNAL, y en un archivo descargable.
+        Para extraer una tabla de dos por dos para un evento en específico del diario,
+    debemos hacer un ciclo a traves de todas las entradas y contar cuántas veces ocurre
+    el evento en relación a las transformaciones y ardilla.
+*/
+
+function tablaPara(evento, diario) {
+    let tabla = [0, 0, 0, 0];
+    for (let i = 0; i < diario.length; i++) {
+        let entrada = diario[i], index = 0;
+        if (entrada.events.includes(evento)) index += 1;
+        if (entrada.squirrel) index += 2;
+        tabla[index] += 1;
+    }
+    return tabla;
+}
+
+console.log(tablaPara("pizza", JOURNAL)); // -> [76, 9, 4, 1]
+
+/*
+        Los array tienen un método includes (“incluye”) que verifica si un valor
+    dado existe en el array. La función usa eso para determinar si el nombre del
+    evento en el que estamos interesados forma parte de la lista de eventos para un
+    determinado día.
+        El cuerpo del ciclo en tablaPara determina en cual caja de la tabla cae cada
+    entrada del diario al verificar si la entrada contiene el evento específico que nos
+    interesa y si el evento ocurre junto con un incidente de ardilla. El ciclo luego
+    agrega uno a la caja correcta en la tabla.
+        Ahora tenemos las herramientas que necesitamos para calcular las correlaciónes
+    individuales. El único paso que queda es encontrar una correlación para cada
+    tipo de evento que se escribio en el diario y ver si algo se destaca.
 */
