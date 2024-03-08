@@ -1463,7 +1463,7 @@ console.log(objetoA); // -> {a: 1, b: 3, c: 4}
 
 // Representaremos el diario de Jacques como un array de objetos.
 
-let diario = [
+let diarioEjemplo = [
     {
         eventos: ["trabajo", "toque un arbol", "pizza", "sali a correr", "television"],
         ardilla: false
@@ -1536,4 +1536,77 @@ puntación = {visitantes: 1, locales: 1};
     idénticas. No hay una operación de comparación "profunda" incorporada en JavaScript,
     que compare objetos por contenidos, pero es posible escribir una (que es un ejercicio
     al final del capítulo).
+*/
+
+// El Diario Del Licántropo
+
+/* 
+    Así que Jacques inicia su intérprete de JavaScript y establece el entorno que 
+    necesita para mantener su diario.
+*/
+
+let diario = [];
+
+function añadirEntrada(eventos, ardilla) {
+    diario.push({ eventos, ardilla });
+}
+
+/*
+        Ten en cuenta que el objeto agregado al diario se ve un poco extraño. En
+    lugar de declarar propiedades como eventos: eventos, simplemente da un nombre de propiedad. 
+    Este es un atajo que representa lo mismo, si el nombre de propiedad en la notación de llaves 
+    no es seguido por un valor, su el valor se toma de la vinculación con el mismo nombre.
+        Entonces, todas las noches a las diez, o algunas veces a la mañana siguiente,
+    después de bajar del estante superior de su biblioteca, Jacques registra el día.
+*/
+
+añadirEntrada(["trabajo", "toque un arbol", "pizza", "sali a correr", "television"], false);
+añadirEntrada(["trabajo", "helado", "coliflor", "lasaña", "toque un arbol", "me cepille los dientes"], false);
+añadirEntrada(["fin de semana", "monte la bicicleta", "descanso", "nueces", "cerveza"], true);
+
+/*
+        Una vez que tiene suficientes puntos de datos, tiene la intención de utilizar
+    estadísticas para encontrar cuál de estos eventos puede estar relacionado con
+    la transformación a ardilla.
+        La correlación es una medida de dependencia entre variables estadísticas.
+    Una variable estadística no es lo mismo que una variable de programación. En
+    las estadísticas, normalmente tienes un conjunto de medidas, y cada variable
+    se mide para cada medida. La correlación entre variables generalmente se
+    expresa como un valor que varia de -1 a 1. Una correlación de cero significa
+    que las variables no estan relacionadas. Una correlación de uno indica que
+    las dos están perfectamente relacionadas—si conoces una, también conoces la
+    otra. Uno negativo también significa que las variables están perfectamente
+    relacionadas pero que son opuestas—cuando una es verdadera, la otra es falsa.
+    Para calcular la medida de correlación entre dos variables booleanas, podemos 
+    usar el coeficiente phi (φ). Esta es una fórmula cuya entrada es una tabla
+    de frecuencias que contiene la cantidad de veces que las diferentes combinaciones 
+    de las variables fueron observadas. El resultado de la fórmula es un número entre 
+    -1 y 1 que describe la correlación.
+        Podríamos tomar el evento de comer pizza y poner eso en una tabla de
+    frecuencias como esta, donde cada número indica la cantidad de veces que
+    ocurrió esa combinación en nuestras mediciones:
+*/
+
+/*
+    - No squirrel, No pizza: 76
+    - No squirrel, pizza: 9
+    - Squirrel, No pizza: 4
+    - Squirrel, pizza: 1
+*/
+
+/*
+    Si llamamos esa tabla n, podemos calcular P usando la siguiente fórmula:
+
+        p = n11n00 - n10n01 / \/ n1 * n0 * n * 1n * 0
+
+        La notación n01 indica el número de mediciones donde la primea variable
+    (ardilla) es falso (0) y la segunda variable (pizza) es verdadera (1). En la
+    tabla de pizza, n01 es 9.
+        El valor n1• se refiere a la suma de todas las medidas donde la primera
+    variable es verdadera, que es 5 en la tabla de ejemplo. Del mismo modo, n•0
+    se refiere a la suma de las mediciones donde la segunda variable es falsa.
+        Entonces para la tabla de pizza, la parte arriba de la línea de división (el
+    dividendo) sería 1×76−4×9 = 40, y la parte inferior (el divisor) sería la raíz
+    cuadrada de 5×85×10×80, o √340000. Esto da φ ≈ 0.069, que es muy pequeño.
+    Comer pizza no parece tener influencia en las transformaciones.
 */
