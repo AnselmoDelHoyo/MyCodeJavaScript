@@ -1682,3 +1682,30 @@ console.log(tablaPara("pizza", JOURNAL)); // -> [76, 9, 4, 1]
     individuales. El único paso que queda es encontrar una correlación para cada
     tipo de evento que se escribio en el diario y ver si algo se destaca.
 */
+
+// Ciclos de Array
+
+// En la función tablaPara, hay un  ciclo como este:
+
+for (let i = 0; i < diario.length; i++){
+    let entrada = diario[i];
+    // Hacer algo con la entrada
+}
+
+/*
+        Este tipo de ciclo es común en JavaScript clasico, ir a traves de los arrays
+    un elemento a la vez es algo que surge mucho, y para hacer eso correrias un
+    contador sobre la longitud del array y elegirías cada elemento en turnos.
+        Hay una forma más simple de escribir tales ciclos en JavaScript moderno
+*/
+
+for (let entrada of diario) {
+    console.log(`${entrada.eventos.length} eventos.`);
+}
+
+/*
+    Cuando un ciclo for se vea de esta manera, con la palabra of ("de") después de una
+    definición de variable, recorrerá los elementos del valor dado después of.
+    Esto funciona no solo para arrays, sino también para strings y algunas otras estructuras
+    de datos.
+*/
