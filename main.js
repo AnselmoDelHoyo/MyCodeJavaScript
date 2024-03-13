@@ -1709,3 +1709,79 @@ for (let entrada of diario) {
     Esto funciona no solo para arrays, sino también para strings y algunas otras estructuras
     de datos.
 */
+
+// El Análisis Final
+
+/*
+    Necesitamos calcular una correlación para cada tipo de evento que ocurra en el
+    conjunto de datos. Para Hacer eso, primero tenemos que encontrar cada tipo de evento.
+*/
+
+function eventosDiario(diario) {
+    let eventos = [];
+    for (let entrada of diario) {
+        for (let evento of entrada.events) {
+            if (!eventos.includes(evento)) {
+                eventos.push(evento);
+            }
+        }
+    }
+    return eventos;
+}
+
+// console.log(eventosDiario(JOURNAL));
+// -> ["zanahoria", "ejercicio", "fin de semana", "pan", ...]
+
+// Usando eso, podemos ver todas las correlaciones.
+
+for (let evento of eventosDiario(JOURNAL)) {
+    console.log(evento +  ":",  phi(tablaPara(evento, JOURNAL)));
+}
+
+/*
+    La mayoría de las correlacione parecen estar cercanas a cero. Come zana-
+    horias, pan o pudín aparentemente no desencadena la licantroía de ardilla.
+    Parece ocurrir un poco más a menudo las fines de semana. Filtremos los resul-
+    tados para solo mostrar correlaciones mayores que 0.1 o menores que -0.1.
+*/
+
+for (let evento of eventosDiario(JOURNAL)) {
+    let correlacion = phi(tablaPara(evento, JOURNAL))
+    if (correlacion > 0.1 || correlacion < -0.1) {
+        console.log(evento + ":", correlacion)        
+    }
+}
+
+/*
+    A-ha! Hay dos factores con una correlación que es claramente más fuerte que las otras.
+    comer nueces tiene un fuerte efecto positivo en la posibilidad de convertirse en una
+    ardilla, mientras que cepillarse los dientes tiene un significativo efecto
+    negativo.
+        Interesante. Intentemos algo.
+*/
+
+for (let entrada of JOURNAL) {
+    if (
+        entrada.events.includes("peanuts") &&
+        !entrada.events.includes("brushed teeth")
+    ) {
+        entrada.events.push("dientes con nueces");
+    }
+}
+
+console.log(phi(tablaPara("dientes con nueces", JOURNAL)));
+// -> 1
+
+/*
+        Ese es un resultado fuerte. El fenómeno ocurre precisamente cuando Jacques
+    come nueces y no se cepilla los dientes. Si tan solo él no hubiese sido tan flojo
+    con su higiene dental, él nunca habría notado su aflicción.
+        Sabiendo esto, Jacques deja de comer nueces y descubre que sus transformaciones no vuelven.
+        Durante algunos años, las cosas van bien para Jacques. Pero en algún momento él pierde su trabajo. Porque vive en un país desagradable donde no
+    tener trabajo significa que no tiene servicios médicos, se ve obligado a trabajar
+    con a circo donde actua como El Increible Hombre-Ardilla, llenando su boca
+    con mantequilla de maní antes de cada presentación.
+        Un día, harto de esta existencia lamentable, Jacques no puede cambiar de
+    vuelta a su forma humana, salta a través de una grieta en la carpa del circo, y
+    se desvanece en el bosque. Nunca se le ve de nuevo
+*/
