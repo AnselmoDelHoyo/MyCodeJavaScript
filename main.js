@@ -1683,7 +1683,7 @@ console.log(tablaPara("pizza", JOURNAL)); // -> [76, 9, 4, 1]
     tipo de evento que se escribio en el diario y ver si algo se destaca.
 */
 
-// Ciclos de Array
+// ====== Ciclos de Array
 
 // En la función tablaPara, hay un  ciclo como este:
 
@@ -1710,7 +1710,7 @@ for (let entrada of diario) {
     de datos.
 */
 
-// El Análisis Final
+// ====== El Análisis Final
 
 /*
     Necesitamos calcular una correlación para cada tipo de evento que ocurra en el
@@ -1776,12 +1776,86 @@ console.log(phi(tablaPara("dientes con nueces", JOURNAL)));
         Ese es un resultado fuerte. El fenómeno ocurre precisamente cuando Jacques
     come nueces y no se cepilla los dientes. Si tan solo él no hubiese sido tan flojo
     con su higiene dental, él nunca habría notado su aflicción.
-        Sabiendo esto, Jacques deja de comer nueces y descubre que sus transformaciones no vuelven.
-        Durante algunos años, las cosas van bien para Jacques. Pero en algún momento él pierde su trabajo. Porque vive en un país desagradable donde no
+        Sabiendo esto, Jacques deja de comer nueces y descubre que sus transformaciones no vuelven.
+        Durante algunos años, las cosas van bien para Jacques. Pero en algún momento él pierde su trabajo. Porque vive en un país desagradable donde no
     tener trabajo significa que no tiene servicios médicos, se ve obligado a trabajar
     con a circo donde actua como El Increible Hombre-Ardilla, llenando su boca
     con mantequilla de maní antes de cada presentación.
         Un día, harto de esta existencia lamentable, Jacques no puede cambiar de
     vuelta a su forma humana, salta a través de una grieta en la carpa del circo, y
     se desvanece en el bosque. Nunca se le ve de nuevo
+*/
+
+// ====== Arrayología Avanzada
+
+/*
+        Algunos conceptos extras relacionados a los objetos. Introduciendo métodos de
+    array útiles generalmente.
+        Se han visto push y pop, que agregan y remueven elementos en el final de una array,
+    anteriormente. Los métodos correspondientes para agregar y remover cosas en el comienzo 
+    un array se llaman unshift y shift.
+*/
+
+let listaDeTareas = [];
+function recordar(tarea) {
+    listaDeTareas.push(tarea);
+}
+function obtenerTarea() {
+    return listaDeTareas.shift();
+}
+function recordarUrgentemente(tarea) {
+    listaDeTareas.unshift(tarea);
+}
+
+/*
+        Ese programa administra una cola de tareas. Agregas tareas al final de la cola
+    al llamar recordar("verduras"), y cuando estés listo para hacer algo, llamas
+    a obtenerTarea() para obtener (y eliminar) el elemento frontal de la cola.
+        La función recordarUrgentemente también agrega una tarea pero la agrega al
+    frente en lugar de a la parte posterior de la cola.
+        Para buscar un valor específico, los arrays proporcionan un método indexOf ("indice de").
+    Este busca a través del array desde el principio hasta el final ("indice de"). Este busca a
+    través del array desde el principio hasta el final y retorna el índice en el que se encontró
+    el valor solicitado, o -1 si este no fue encontrado. Para buscar desde el final en lugar del
+    inicio, hay un método similar llamado lastIndexOf ("ultimo indice de").
+*/
+
+console.log([1, 2, 3, 2, 1].indexOf(2));
+// -> 1
+console.log([1, 2, 3, 2, 1].lastIndexOf(2));
+// -> 3
+
+/* 
+        Tanto indexOf como lastIndexOf toman un segundo argumento opcional que indica dónde comenzar
+    la búsqueda.
+        Otro método fundamental de array es slice ("rebanar"), que toma índices de inicio y fin y
+    retorna un array que solo tiene los elementos entre ellos. El
+    índice de inicio es inclusivo, el índice final es exclusivo.
+*/
+
+console.log([0, 1, 2, 3, 4].slice(2, 4));
+// -> [2, 3]
+console.log([0, 1, 2, 3, 4].slice(2))
+// -> [2, 3, 4]
+
+/*
+        Cuando no se proporcione el índice final, slice tomará todos los elementos
+    después del índice de inicio. También puede omitir el índice de inicio para copiar
+    todo el array.
+        El método concat (“concatenar”) se puede usar para unir arrays y asi crear
+    un nuevo array, similar a lo que hace el operador + para los strings.
+        El siguiente ejemplo muestra tanto concat como slice en acción. Toma un
+    array y un índice, y retorna un nuevo array que es una copia del array original
+    pero eliminando al elemento en el índice dado:
+*/
+
+function remover(array, indice) {
+    return array.slice(0, indice).concat(array.slice(indice + 1));
+}
+console.log(remover(["a", "b", "c", "d", "e"], 2))
+// -> ["a", "b", "d", "e"]
+
+/*
+    Si a concat le pasas un argumento que no es una array, ese valor será agregado
+    al nuevo array como si este fuera un array de un solo elemento.
 */
