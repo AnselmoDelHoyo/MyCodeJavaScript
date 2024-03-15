@@ -1859,3 +1859,82 @@ console.log(remover(["a", "b", "c", "d", "e"], 2))
     Si a concat le pasas un argumento que no es una array, ese valor será agregado
     al nuevo array como si este fuera un array de un solo elemento.
 */
+
+// ====== Strings y sus Propiedades
+
+/* 
+    Podemos leer propiedades como length y toUpperCase de valores string.
+    Pero si intentas agregar una nueva propiedad, esta no se mantiene.
+*/
+
+let kim = "kim";
+kim.edad = 88;
+console.log(kim.edad); // -> undefined
+
+/*
+        Los valores de tipo string, número, y Booleano no son objetos, y aunque
+    el lenguaje no se queja si intentas establecer nuevas propiedades en ellos, en
+    realidad no almacena esas propiedades. Como se mencionó antes, tales valores
+    son inmutables y no pueden ser cambiados.
+        Pero estos tipos tienen propiedades integradas. Cada valor de string tiene un
+    numero de metodos. Algunos muy útiles son slice e indexOf, que se parecen
+    a los métodos de array de los mismos nombres.
+*/
+
+console.log("panaderia".slice(0,3)); // -> pan
+console.log("panaderia".indexOf("a")); // -> 1
+
+/*
+    Una diferencia es que el indexOf de un string puede buscar por un string que
+    contenga más de un carácter, mientras que el método correspondiente al array
+    solo busca por un elemento único.
+*/
+
+console.log("uno dos tres".indexOf("tres"));
+// -> 8
+
+/*
+    El método trim (“recortar”) elimina los espacios en blanco (espacios, saltos
+    de linea, tabulaciones y caracteres similares) del inicio y final de un string.
+*/
+
+console.log("  okey \n ".trim()); // -> okey
+
+/*
+    La función alcocharConCeros del capítulo anterior también existe como un método.
+    Se llama padStart ("alcohar inicio") y toma la longitud deseada y el carácter de
+    relleno como argumentos.
+*/
+
+console.log(String(6).padStart(3, "0")); // 006
+
+/*
+    Puedes dividir un string en cada ocurrencia de otro string con el método split
+    ("dividir"), y unirlo nuevamente con join ("unir").
+*/
+
+let oracion = "Los pajaros secretario se especializan en pisotear";
+let palabras = oracion.split(" ");
+console.log(palabras);
+// -> ["Los", "pajaros", "secretarios", "se", "especializan", "en", "pisotear"];
+console.log(palabras.join(". "));
+// -> Los. pajaros. secretarios. se. especializan. en. pisotear
+
+/*
+    Se puede repetir un string con el método repeat ("repetir"), el cual crea un
+    nuevo string que contiene múltiples copias concatenadas del string original.
+*/
+
+console.log("LA".repeat(3));
+// -> LALALA
+
+/*
+    Ya se ha visto la propiedad length en los valores de tipo string. Acceder a
+    los caracteres individuales en un string es similar a acceder a los elementos de
+    un array.
+*/
+
+let string = "abc";
+console.log(string.length); // -> 3
+console.log(string[1]); // -> b
+
