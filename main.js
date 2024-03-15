@@ -1938,3 +1938,45 @@ let string = "abc";
 console.log(string.length); // -> 3
 console.log(string[1]); // -> b
 
+// ====== Parámetros Restantes
+
+/*
+    Puede ser útil para una función aceptar cualquier cantidad de argumentos. Por
+    ejemplo, Math.max calcula el máximo de todos los argumentos que le son dados.
+        Para escribir tal función, pones tres puntos antes del último parámetro de
+    la función, asi:
+*/
+
+function maximo(...numeros) {
+    let resultado = -Infinity;
+    for (let numero of numeros) {
+        if (numero > resultado) resultado = numero;
+    }
+    return resultado;
+}
+console.log(maximo(4, 1, 9, -2)); // -9
+
+/*
+        Cuando se llame a una función como esa, el parámetro restante está vinculado 
+    a un array que contiene todos los argumentos adicionales. Si hay otros
+    parámetros antes que él, sus valores no serán parte de ese array. Cuando, tal
+    como en maximo, sea el único parámetro, contendrá todos los argumentos.
+        Se puede usar una notación de tres puntos similar para llamar una función
+    con un array de argumentos.
+*/
+
+let numeros = [5, 1, 7];
+console.log(maximo(...numeros));
+// -> 7
+
+/*
+        Esto “extiende” al array en la llamada de la función, pasando sus elementos
+    como argumentos separados. Es posible incluir un array de esa manera, junto
+    con otros argumentos, como en max(9, ...numeros, 2).
+        La notación de corchetes para crear arrays permite al operador de tres-puntos
+    extender otro array en el nuevo array:
+*/
+
+let palabras2 = ["nunca", "entenderas"];
+console.log(["tu", ...palabras, "completamente"]);
+// -> ["tu", "nunca", "entenderas", "completamente"]
