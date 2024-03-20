@@ -1978,5 +1978,77 @@ console.log(maximo(...numeros));
 */
 
 let palabras2 = ["nunca", "entenderas"];
-console.log(["tu", ...palabras, "completamente"]);
+console.log(["tu", ...palabras2, "completamente"]);
 // -> ["tu", "nunca", "entenderas", "completamente"]
+
+// ====== El Objeto Math
+
+/*
+    Math es una bolsa de utilidades relacionadas a los números, como Math.max (máximo),
+    Math.min (mínimo) y Math.sqrt(raíz cuadrada).
+
+    El objeto Math es usado como un contenedor que agrupa un grupo de funcionalidades 
+    relacionadas. Solo hay un objeto Math, y casi nunca es útil como un valor. Más bien, 
+    un espacio de nombre para que todos estas funciones y valores no tengan que ser vinculaciones 
+    globales.
+
+
+    Para hacer trigonometría, Math puede ayudar. Contiene cos (coseno), sin (seno) 
+    y tan (tangente), así como sus funciones inversas, acos, asin, y atan, respectivamente. 
+    El número π (pi), o al menos la aproximación más cercano que cabe en un número de JavaScript,
+    está disponible como Math.PI. Hay una vieja tradición en la programación de escribir los 
+    nombres de los valores constantes en mayúsculas
+*/
+
+function puntoAleatorioEnCirculo(radio) {
+    let angulo = Math.random() * 2 * Math.PI;
+    return {
+        x: radio * Math.cos(angulo),
+        y: radio * Math.sin(angulo)
+    };
+}
+
+console.log(puntoAleatorioEnCirculo(2))
+
+// -> {x: 0.3667, y 1,966}
+
+/*
+    En caso de no entender los senos y cosenos estos igual se explicarán
+    en el capítulo 14.
+
+    Math.random. Esta es una función que retorna un nuevo número pseudoaleatorio
+    entre cero (inclusivo) y uno (exclusivo) cada vez que la llamas.
+*/
+
+console.log(Math.random());
+// -> 0.36993729369714856
+console.log(Math.random());
+// -> 0.727367032552138
+console.log(Math.random());
+// -> 0.40180766698904335
+
+/*
+    Aunque las computadoras son máquinas deterministas, simpre reaccionan
+    de la misma manera dada la misma entrada, es posible hacer que produzcan números
+    que parecen aleatorios. Para hacer eso, la máquina mantiene algún valor
+    escondido, y cada vez que le pidas un nuevo número aleatorio, realmacena un
+    nuevo valor y retorna un número derivado de él. De esta manera, puede
+    producir número nuevos y difíciles de predecir de una manera que parece
+    aleatoria.
+
+    Si se quiere un número entero al azar en lugar de uno fraccionario, podemos usa
+    Math.floor (que redondea hacia abajo al número entero más cercano) con el resultado
+    de Math.random.
+*/
+
+console.log(Math.floor(Math.random() * 10));
+// -> 2
+
+/*
+    Multiplicar el número aleatorio por 10 nos da un número mayor que o igual a cero e inferior a 10.
+
+    También están las funciones Math.ceil (que redondea hacia arriba hasta llegar al número entero mas 
+    cercano), Math.round (al número entero más cercano), y Math.abs, que toma el valor absoluto de un 
+    número, lo que significa que niega los valores negativos pero deja los positivos tal y como estan.
+*/
+
