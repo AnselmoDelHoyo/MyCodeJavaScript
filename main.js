@@ -2094,3 +2094,51 @@ console.log(nombre);
 // Ten en cuenta que si intentas desestructurar null o undefined, obtendrás un
 // error, igual como te pasaria si intentaras acceder directamente a una propiedad
 // de esos valores.
+
+// ====== JSON
+
+/*
+        Ya que las propiedades solo agarran su valor, en lugar de contenerlo, los objetos
+    y arrays se almacenan en la memoria de la computadora como secuencias de bits
+    que contienen las direcciónes, el lugar en la memoria, de sus contenidos. Asi
+    que un array con otro array dentro de el consiste en (al menos) una región de
+    memoria para el array interno, y otra para el array externo, que contiene (entre
+    otras cosas) un número binario que representa la posición del array interno.
+        Si deseas guardar datos en un archivo para más tarde, o para enviarlo a otra
+    computadora a través de la red, tienes que convertir de alguna manera estos enredos
+    de direcciones de memoria a una descripción que se puede almacenar o enviar.
+        Lo que podemos hacer es serializar los datos. Eso significa que son convertidos
+    a una descripción plana. Un formato de serialización popular llamado JSON 
+    (pronunciado "Jason"), que significa JavaScript Object Notation. Es ampliamente
+    utilizado como un formato de almacenamiento y comunicación de datos en la Web,
+    incluso en otros lenguajes diferentes a JavaScript.
+        JSON es similar a la forma en que JavaScript escribe arrays y objetos, con
+    algunas restricciones. Todos los nombres de propiedad deben estar rodeados por
+    comillas dobles, y solo se permiten expresiones de datos simples, sin llamadas a
+    función, vinculaciones o cualquier otra cosa que involucre computaciones reales.
+    Los comentarios no están permitidos en JSON.
+        Una entrada de diario podria verse así cuando se representa como datos
+    JSON:
+*/
+
+// {
+//     "ardilla": false,
+//     "eventos": ["trabajo", "toque un arbol", "pizza", "sali a correr"]
+// }
+
+/*
+    JavaScript nos da las funciones JSON.stringify y JSON.parse para convertir
+    datos hacia y desde este formato. El primero toma un valor en JavaScript y retorna
+    un string codificado en JSON. La segunda toma un string como ese y lo convierte al
+    valor que este codifica.
+*/
+
+let stringify = JSON.stringify({
+    ardilla: false,
+    eventos: ["fin de semana"]
+})
+
+console.log(stringify);
+// → {"ardilla":false,"eventos":["fin de semana"]}
+console.log(JSON.parse(string).eventos);
+// → ["fin de semana"]
