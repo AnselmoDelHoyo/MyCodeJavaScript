@@ -2142,3 +2142,24 @@ console.log(stringify);
 // → {"ardilla":false,"eventos":["fin de semana"]}
 console.log(JSON.parse(string).eventos);
 // → ["fin de semana"]
+
+// ====== Resumen
+
+/*
+    Los objetos y array (que son un tipo específico de objeto) proporcionan tornas
+    de agrupar varios valores en un solo valor. Conceptualmente, esto nos permite
+    poner un montón de cosas relacionada en un bolso y correr alrededor con el bolso,
+    en lugar de envolver nuestros brazos alrededor de todas las cosas individuales,
+    tratando de aferrarnos a ellas por separado.
+        La mayoría de los valores en JavaScript tienen propiedades, las excepciones
+    son null y undefined. Se accede a las propiedades usando valor.propiedad o 
+    valor["propiedad0"]. Los objetos tienden a usar nombres para sus propiedades
+    y almacenar más o menos un conjunto fijo de ellos. Los array, por el otro lado,
+    generalmente contienen cantidades variables de valores conceptualmente idénticos
+    y usa números (comenzando desde 0) como los nombres de sus propiedades.
+        Hay algunas propiedades con nombre en los arrays, como length y un número
+    de métodos_ Los métodos son funciones que viven en propiedades y (por lo
+    general) actuan sobre el valor del que son una propiedad.
+        Puedes iterar sobre los arrays utilizando un tipo especial de ciclo for,
+    for (let elemento of array).
+*/
