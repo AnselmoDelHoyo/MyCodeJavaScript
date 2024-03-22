@@ -2449,4 +2449,3 @@ console.log(map(codigosDerechaIzquierda, codigo => codigo.name));
 // -> ["Adlam", "Arabic", "Imperial Aramaic", ...]
 
 // Al igual que forEach y filter, map es un método de array estándar.
-
