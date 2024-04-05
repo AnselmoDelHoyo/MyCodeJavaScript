@@ -23,19 +23,11 @@
 const rango = (inicio, final, paso = 1) => {
     let array = [];
     if (inicio <= final) {
-        for (
-            let i = inicio; 
-            i <= final;
-            i += paso
-        ) {
+        for (let i = inicio; i <= final; i += paso) {
             array.push(i);
         }
     } else {
-        for (
-            let i = inicio; 
-            i >= final;
-            i += paso
-        ) {
+        for (let i = inicio; i >= final; i += paso) {
             array.push(i);
         }
     }
