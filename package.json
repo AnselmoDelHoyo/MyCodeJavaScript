@@ -13,7 +13,8 @@
     "exercise-3-3": "node exercises/chapter-3/exercise-3",
     "exercise-4-1": "node exercises/chapter-4/exercise-1",
     "exercise-4-2": "node exercises/chapter-4/exercise-2",
-    "exercise-4-3": "node exercises/chapter-4/exercise-3"
+    "exercise-4-3": "node exercises/chapter-4/exercise-3",
+    "exercise-4-4": "node exercises/chapter-4/exercise-4"
   },
   "keywords": [],
   "author": "",
