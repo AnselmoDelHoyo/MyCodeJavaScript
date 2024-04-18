@@ -2155,10 +2155,90 @@ console.log(JSON.parse(string).eventos);
     son null y undefined. Se accede a las propiedades usando valor.propiedad o
     valor["propiedad"]. Los objetos tienden a usar nombres para sus propiedades
     y almacenar más o menos un conjunto fijo de ellos. Los arrays, por el otro lado,
-    generalmente contienen cantidades variables de valores conceptualmente idénticos y usa números (comenzando desde 0) como los nombres de sus propiedades.
+    generalmente contienen cantidades variables de valores conceptualmente idénticos y usa números (comenzando desde 0) como los nombres de sus propiedades.
         Hay algunas propiedades con nombre en los arrays, como length y un numero
     de metodos. Los métodos son funciones que viven en propiedades y (por lo
     general) actuan sobre el valor del que son una propiedad.
         Puedes iterar sobre los arrays utilizando un tipo especial de ciclo for—for
     (let elemento of array).
+*/
+
+
+// ===========================================
+// = Capítulo 5: Funciones de Orden Superior =
+// ===========================================
+
+/*
+    Un programa grande es un programa costoso, y no solo por el tiempo que se
+    necesita para construirlo. El tamaño casi siempre involucra complejidad, y la
+    complejidad confunde a los programadores.
+
+    Volvamos rapidamente a los dos últimos programas de ejemplo de la intro-
+    ducción. El primero es auto-contenido y solo tiene seis líneas de largo:
+*/
+
+let total = 0, cuenta = 1;
+while (cuenta <= 10) {
+    total += cuenta;
+    cuenta += 1;
+}
+console.log(total);
+
+/*
+    El segundo depende de dos funciones externas y tiene una líena de longitud:
+*/
+
+console.log(suma(rango(1, 10)))
+
+/*
+        ¿Cuál es más probable que contenga un bug?
+        Si contamos el tamaño de las definiciones de suma y rango, el segundo pro-
+    grama también es grande—incluso puede que sea más grande que el primero.
+    Pero aún así, argumentaria que es más probable que sea correcto.
+        Es más probable que sea correcto porque la solución se expresa en un vocab-
+    ulario que corresponde al problema que se está resolviendo. Sumar un rango
+    de números no se trata acerca de ciclos y contadores. Se trata acerca de rangos
+    y sumas.
+        Las definiciones de este vocabulario (las funciones suma y rango) seguirán
+    involucrando ciclos, contadores y otros detalles incidentales. Pero ya que ex-
+    presan conceptos más simples que el programa como un conjunto, son más
+    fáciles de realizar correctamente.
+*/
+
+// ====== Abstracción
+
+/*
+    En el contexto de la programación, estos tipos de vocabularios suelen ser llama-
+    dos abstracciones. Las abstracciones esconden detalles y nos dan la capacidad
+    de hablar acerca de los problemas a un nivel superior (o más abstracto).
+*/
+
+/*
+    Como una analogía, compara estas dos recetas de sopa de guisantes:
+
+        Coloque 1 taza de guisantes secos por persona en un recipiente.
+        Agregue agua hasta que los guisantes esten bien cubiertos. Deje los
+        guisantes en agua durante al menos 12 horas. Saque los guisantes
+        del agua y pongalos en una cacerola para cocinar. Agregue 4 tazas
+        de agua por persona. Cubra la sartén y mantenga los guisantes
+        hirviendo a fuego lento durante dos horas. Tome media cebolla
+        por persona. Cortela en piezas con un cuchillo. Agréguela a los
+        guisantes. Tome un tallo de apio por persona. Cortelo en pedazos
+        con un cuchillo. Agréguelo a los guisantes. Tome una zanahoria
+        por persona. Cortela en pedazos. Con un cuchillo! Agregarla a los
+        guisantes. Cocine por 10 minutos más.
+
+    Y la segunda receta:
+
+        Por persona: 1 taza de guisantes secos, media cebolla picada, un
+        tallo de apio y una zanahoria.
+        Remoje los guisantes durante 12 horas. Cocine a fuego lento du-
+        rante 2 horas en 4 tazas de agua (por persona). Picar y agregar
+        verduras. Cocine por 10 minutos más.
+*/
+
+/*
+        La segunda es más corta y fácil de interpretar. Pero necesitas entender
+    algunas palabras más relacionadas a la cocina, remojar, cocinar a fuego lento,
+    picar, y, supongo, verduras.
 */
