@@ -2087,8 +2087,8 @@ function phi([n00, n01, n10, n11]) {
 // “mirar dentro” del valor, y asi vincular sus contenidos.
 // Un truco similar funciona para objetos, utilizando llaves en lugar de corchetes.
 
-let {nombre} = {nombre: "Faraji", edad: 23};
-console.log(nombre);
+let { nombre2 } = {nombre2: "Faraji", edad: 23};
+console.log(nombre2);
 // -> Faraji
 
 // Ten en cuenta que si intentas desestructurar null o undefined, obtendrás un
@@ -2140,7 +2140,7 @@ let stringify = JSON.stringify({
 
 console.log(stringify);
 // → {"ardilla":false,"eventos":["fin de semana"]}
-console.log(JSON.parse(string).eventos);
+console.log(JSON.parse(stringify).eventos);
 // → ["fin de semana"]
 
 // ====== Resumen
@@ -2188,7 +2188,7 @@ console.log(total);
     El segundo depende de dos funciones externas y tiene una líena de longitud:
 */
 
-console.log(suma(rango(1, 10)))
+// console.log(suma(rango(1, 10)))
 
 /*
         ¿Cuál es más probable que contenga un bug?
@@ -2241,4 +2241,59 @@ console.log(suma(rango(1, 10)))
         La segunda es más corta y fácil de interpretar. Pero necesitas entender
     algunas palabras más relacionadas a la cocina, remojar, cocinar a fuego lento,
     picar, y, supongo, verduras.
+        En la programación, es una habilidad útil, darse cuenta cuando estás traba-
+    jando en un nivel de abstracción demasiado bajo.
 */
+
+// ====== Abstrayendo La Repetición
+
+/*
+        Las funciones simples, como las hemos vista hasta ahora, son una buena forma
+    de construir abtracciones. Pero a veces se quedan cortas.
+        Es común que un programa haga algo una determinada cantidad de veces.
+    Puedes escribir un cicle for para eso, de esta manera:
+*/
+
+for (let index = 0; index < 10; index++) {
+    console.log(index);
+}
+
+/*
+    Podemos abstraer "hacer algo N veces" como una función? Bueno, es fácil
+    escribir una función que llame a console.log N cantidad de veces.
+*/
+
+function repetirLog(n) {
+    for (let index = 0; index < n; index++) {
+        console.log(index);
+    }
+}
+
+/*
+    Pero, y si queremos hacer algo más que loggear los números? Ya que "Hacer
+    algo" se puede representar como una función y que las funciones solo son valores,
+    podemos pasar nuestra acción como un valor de función.
+*/
+
+function repetir(n, accion) {
+    for (let i = 0; i < n; i++) {
+        accion(i);
+    }
+}
+
+repetir(3, console.log);
+
+// -> 0
+// -> 1
+// -> 2
+
+/*
+    No es necesarios que le pases una función predefinida a repetir. A menudo,
+    desearas crear un valor de función al momento en su lugar.
+*/
+
+let etiquetas = [];
+repetir(5, i => {
+    etiquetas.push(`Unidad ${i + 1}`);
+});
+console.log(etiquetas)
