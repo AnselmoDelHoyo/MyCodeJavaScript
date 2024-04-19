@@ -2354,3 +2354,41 @@ repetir(3, n => {
 ["A", "B"].forEach(letra => console.log(letra));
 // -> A
 // -> B
+
+// ====== Conjunto de Datos de Códigos
+
+/*
+    Un área donde brillan las funciones de orden superior
+    es en el procesamiento de datos reales. En este capítulo se usarán
+    un conjunto de datos acerca de códigos, sistema de escrituras como
+    Latin, Cirílico, o Arábico.
+
+    El conjunto de datos de ejemplo contiene algunas piezas de información
+    acerca de los 140 códigos definidas en Unicode. Este está disponible en 
+    la vinculación SCRIPTS. La vinculación contiene un array de objetos, cada
+    uno de los cuales describe un código.
+*/
+
+let codigoCoptic = {
+    name: "Coptic",
+    ranges: [[994, 1008], [11392, 11508], [11513, 11520]],
+    direction: "ltr",
+    year: -200,
+    living: false,
+    link: "https://en.wikipedia.org/wiki/Coptic_alphabet"
+}
+
+/*
+        Tal objeto te dice el nombre del codigo, los rangos de Unicode asignados a él,
+    la dirección en la que está escrito, la tiempo de origen (aproximado), si todavía
+    está en uso, y un enlace a más información. La dirección en la que esta escrito
+    puede ser "ltr" (left-to-right) para izquierda a derecha, "rtl" (right-to-left)
+    para derecha a izquierda (la forma en que se escriben los textos en árabe y en
+    hebreo), o "ttb" (top-to-bottom) para de arriba a abajo (como con la escritura
+    de Mongolia).
+        La propiedad ranges contiene un array de rangos de caracteres Unicode, cada
+    uno de los cuales es un array de dos elementos que contiene límites inferior y
+    superior. Se asignan los códigos de caracteres dentro de estos rangos al codigo.
+    El limite más bajo es inclusivo (el código 994 es un carácter Copto) y el límite
+    superior es no-inclusivo (el código 1008 no lo es).
+*/
