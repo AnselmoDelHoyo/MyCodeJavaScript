@@ -4,7 +4,8 @@
 // = Capítulo 1: Valores, Tipos y Operadores =
 // ===========================================
 
-const JOURNAL = require("./journal")
+const JOURNAL = require("./journal");
+const SCRIPTS = require("./chapter/05_data/code/scripts")
 
 // ====== Valores
 
@@ -2392,3 +2393,27 @@ let codigoCoptic = {
     El limite más bajo es inclusivo (el código 994 es un carácter Copto) y el límite
     superior es no-inclusivo (el código 1008 no lo es).
 */
+
+// ====== Filtrando Arrays
+
+/*
+    Para encontrar los códigos en el conjunto de datos que todavía están en uso, la
+    siquiente función podría ser útil. Filtra hacia afuera los elementos en un array
+    que no pasen una prueba:
+*/
+
+function filtrar(array, prueba) {
+    let pasaron = [];
+    for (let elemento of array) {
+        if (prueba(elemento)) {
+            pasaron.push(elemento);
+        }
+    }
+    return pasaron;
+}
+
+console.log(filtrar(SCRIPTS, codigo => codigo.living));
+// -> [{name: "Adlam", ...}, ...]
+
+console.log(SCRIPTS.filter((codigo) => codigo.direction == "ttb"));
+// -> [{anme: "Mongolian", ...}, ...]
