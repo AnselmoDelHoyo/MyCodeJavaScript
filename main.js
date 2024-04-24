@@ -2415,5 +2415,37 @@ function filtrar(array, prueba) {
 console.log(filtrar(SCRIPTS, codigo => codigo.living));
 // -> [{name: "Adlam", ...}, ...]
 
+/*
+    Al igual que forEach, filtrar es un método de array estándar, este esta
+    incorporado como filter. El ejemplo definió la función solo para mostrar lo
+    que hace internamente. A partir de ahora, la usaremos así en su lugar:
+*/
+
 console.log(SCRIPTS.filter((codigo) => codigo.direction == "ttb"));
-// -> [{anme: "Mongolian", ...}, ...]
+// -> [{name: "Mongolian", ...}, ...]
+
+// ====== Transformando con Map
+
+/*
+        Digamos que tenemos un array de objetos que representan codigos, produci-
+    dos al filtrar el array SCRIPTS de alguna manera. Pero queremos un array de
+    nombres, que es más fácil de inspeccionar.
+        El método map ("mapear") transforma un array al aplicar una función a todos
+    sus elementos y construir un nuevo array a partir de los valores retornados. El
+    nuevo array tendrá la misma longitud que el array de entrada, pero su contenido
+    ha sido mapeado a una nueva forma en base a la función.
+*/
+
+function map(array, transformar) {
+    let mapeados = [];
+    for (let elemento of array) {
+        mapeados.push(transformar(elemento));
+    }
+    return mapeados;
+}
+
+let codigosDerechaIzquierda = SCRIPTS.filter(codigo => codigo.direction = "rtl");
+console.log(map(codigosDerechaIzquierda, codigo => codigo.name));
+// -> ["Adlam", "Arabic", "Imperial Aramaic", ...]
+
+// Al igual que forEach y filter, map es un método de array estándar.
