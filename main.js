@@ -2143,3 +2143,356 @@ console.log(stringify);
 // → {"ardilla":false,"eventos":["fin de semana"]}
 console.log(JSON.parse(stringify).eventos);
 // → ["fin de semana"]
+
+// ====== Resumen
+
+/*
+    Los objetos y arrays (que son un tipo específico de objeto) proporcionan formas
+    de agrupar varios valores en un solo valor. Conceptualmente, esto nos permite
+    poner un montón de cosas relacionadas en un bolso y correr alredor con el bolso,
+    en lugar de envolver nuestros brazos alrededor de todas las cosas individuales,
+    tratando de aferrarnos a ellas por separado.
+        La mayoría de los valores en JavaScript tienen propiedades, las excepciones
+    son null y undefined. Se accede a las propiedades usando valor.propiedad o
+    valor["propiedad"]. Los objetos tienden a usar nombres para sus propiedades
+    y almacenar más o menos un conjunto fijo de ellos. Los arrays, por el otro lado,
+    generalmente contienen cantidades variables de valores conceptualmente idénti
+    cos y usa números (comenzando desde 0) como los nombres de sus propiedades.
+        Hay algunas propiedades con nombre en los arrays, como length y un numero
+    de metodos. Los métodos son funciones que viven en propiedades y (por lo
+    general) actuan sobre el valor del que son una propiedad.
+
+    Puedes iterar sobre los arrays utilizando un tipo especial de ciclo for,
+    for (let elemento of array).
+*/
+
+
+// ===========================================
+// = Capítulo 5: Funciones de Orden Superior =
+// ===========================================
+
+/*
+    Un program grande es un programa costoso, y no solo por el tiempo que se
+    necesita para construilo. El tamaño casi siempre involucra complejidad, y la
+    complejidad confunde a los programadores. A su vez, los programadores confundidos,
+    introducen errores en los programas. Un programa grande entonces
+    proporciona de mucho especio para que estos bugs se oculten, haciéndolos difi-
+    ciles de encontrar.
+        Volvamos rapidamente a los dos últimos programas de ejemplo en la intro-
+    ducción. El primero es auto-contenido y solo tiene seis líneas de largo:
+*/
+
+let total = 0, cuenta = 1;
+
+while (cuenta <= 10) {
+    total += cuenta;
+    cuenta += 1;
+}
+console.log(total);
+
+/*
+    El segundo depende de dos funciones externas y tiene una línea de longitud
+*/
+
+// console.log(suma(rango(1, 10)));
+
+/*
+        Si contamos el tamaño de las definiciones de suma y rango, el segundo pro-
+    grama también es grande—incluso puede que sea más grande que el primero.
+    Pero aún así, argumentaria que es más probable que sea correcto.
+        Es más probable que sea correcto porque la solución se expresa en un vocab-
+    ulario que corresponde al problema que se está resolviendo. Sumar un rango
+    de números no se trata acerca de ciclos y contadores. Se trata acerca de rangos
+    y sumas.
+*/
+
+// ======= Abstracción
+
+/*
+    En el contexto de la programación, estos tipos de vocabularios suelen ser llama-
+    dos abstracciones. Las abstracciones. Las abstracciones escondes detalles y nos dan
+    la capacidad de hablar acerca de los problemas a un nivel superior (o más abstracto).
+        Como una analogía, compara estas dos recets de sopa de guisantes:
+
+        Coloque 1 taza de guisantes secos por persona en un recipiente.
+        Agregue agua hasta que los guisantes esten bien cubiertos. Deje los
+        guisantes en agua durante al menos 12 horas. Saque los guisantes
+        del agua y pongalos en una cacerola para cocinar. Agregue 4 tazas
+        de agua por persona. Cubra la sartén y mantenga los guisantes
+        hirviendo a fuego lento durante dos horas. Tome media cebolla
+        por persona. Cortela en piezas con un cuchillo. Agréguela a los
+        guisantes. Tome un tallo de apio por persona. Cortelo en pedazos
+        con un cuchillo. Agréguelo a los guisantes. Tome una zanahoria
+        por persona. Cortela en pedazos. Con un cuchillo! Agregarla a los
+        guisantes. Cocine por 10 minutos más.
+
+    Y la segunda receta:
+
+        Por persona: 1 taza de guisantes secos, media cebolla picada, un
+        tallo de apio y una zanahoria.
+        Remoje los guisantes durante 12 horas. Cocine a fuego lento du
+        rante 2 horas en 4 tazas de agua (por persona). Picar y agregar
+        verduras. Cocine por 10 minutos más.
+
+        La segunda es más corta y fácil de interpretar. Pero necesitas entender
+    algunas palabras más relacionadas a la cocina, remojar, cocinar a fuego lento,
+    picar, y, supongo, verduras.
+*/
+
+// ====== Abstrayendo la repetición
+
+/*
+    Las funciones simples, como las hemos vista hasta ahora, son una buena forma
+    de construir abstracciones. Pero a veces se quedan cortas.
+        Es común que un programa haga algo una determinada cantidad de veces.
+    Puedes escribir un ciclo for para eso, de esta manera:
+*/
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+/*
+        Podemos abstraer “hacer algo N veces” como una función? Bueno, es fácil
+    escribir una función que llame a console.log N cantidad de veces.
+*/
+
+function repetirLog(n) {
+    for (let i = 0; i < n; i++) {
+        console.log(i);
+    }
+}
+
+/*
+        Pero, y si queremos hacer algo más que loggear los números? Ya que “hacer
+    algo” se puede representar como una función y que las funciones solo son valores,
+    podemos pasar nuestra acción como un valor de función.
+*/
+
+function repetir(n, accion) {
+    for (let i = 0; i < n; i++) {
+        accion(i);
+    }
+}
+
+repetir(3, console.log);
+// -> 1
+// -> 2
+// -> 3
+
+/*
+        No es necesario que le pases una función predefinida a repetir. A menudo,
+    desearás crear un valor de función al momento en su lugar.
+*/
+
+let etiquetas = [];
+
+repetir(5, i => {
+    etiquetas.push(`Unidad ${i + 1}`);
+})
+console.log(etiquetas);
+
+// → ["Unidad 1", "Unidad 2", "Unidad 3", "Unidad 4", "Unidad 5"]
+
+
+// ====== Funciones de Orden Superior
+
+/*
+        Las funciones que operan en otras funciones, ya sea tomándolas como argumen-
+    tos o retornandolas, se denominan funciones de orden superior. Como ya hemos
+    visto que las funciones son valores regulares, no existe nada particularmente
+    notable sobre el hecho de que tales funciones existen. El término proviene de
+    las matemáticas, donde la distinción entre funciones y otros valores se toma
+    más en serio.
+        Las funciones de orden superior nos permiten abstraer sobre acciones, no
+    solo sobre valores. Estas vienen en varias formas. Por ejemplo, puedes tener
+    funciones que crean nuevas funciones.
+*/
+
+function mayorQue(n) {
+    return m => m > n;
+}
+let mayorQue10 = mayorQue(10);
+console.log(mayorQue10(11)); // -> true
+
+// Y puedes tener funciones que cambien otras funciones.
+
+function ruidosa(funcion) {
+    return (...argumentos) => {
+        console.log("llamando con", argumentos);
+        let resultado = funcion(...argumentos);
+        console.log("llamada con", argumentos, ", retorno", resultado);
+        return resultado;
+    };
+}
+ruidosa(Math.min)(3, 2, 1);
+// → llamando con [3, 2, 1]
+// → llamada con [3, 2, 1] , retorno 1
+
+
+/*
+    Hay un método de array incorporado, forEach que porporciona algo como 
+    un ciclo for/of como una función de orden superior.
+*/
+
+["A","B"].forEach(letra => console.log(letra));
+// -> A
+// -> B
+
+// ====== Conjunto de Datos de Códigos
+
+/*
+    Un área donde brillan las funciones de orden superior es en el procesamiento de datos.
+    Para procesar datos, necesitaremos algunos datos reales. Este capítulo
+    usará un conjunto de datos acerca de códigos, sistema de escrituras como Latin, Cirílico, o Arábico.
+        El conjunto de datos de ejemplo contiene algunas piezas de información
+    acerca de los 140 codigos definidos en Unicode.
+*/
+
+let coptic = {
+    name: "Coptic",
+    ranges: [[994, 1008], [11392, 11508], [11513, 11520]],
+    direction: "ltr",
+    year: -200,
+    living: false,
+    link: "https://en.wikipedia.org/wiki/Coptic_alphabet"
+}
+
+/*
+        Tal objeto te dice el nombre del codigo, los rangos de Unicode asignados a él,
+    la dirección en la que está escrito, la tiempo de origen (aproximado), si todavía
+    está en uso, y un enlace a más información. La dirección en la que esta escrito
+    puede ser "ltr" (left-to-right) para izquierda a derecha, "rtl" (right-to-left)
+    para derecha a izquierda (la forma en que se escriben los textos en árabe y en
+    hebreo), o "ttb" (top-to-bottom) para de arriba a abajo (como con la escritura
+    de Mongolia).
+        La propiedad ranges contiene un array de rangos de caracteres Unicode, cada
+    uno de los cuales es un array de dos elementos que contiene límites inferior y
+    superior. Se asignan los códigos de caracteres dentro de estos rangos al codigo.
+    El limite más bajo es inclusivo (el código 994 es un carácter Copto) y el límite
+    superior es no-inclusivo (el código 1008 no lo es).
+*/
+
+// ====== Filtrando Arrays
+
+/*
+        Para encontrar los codigos en el conjunto de datos que todavía están en uso, la
+    siguiente función podría ser útil. Filtra hacia afuera los elementos en un array
+    que no pasen una prueba:
+*/
+
+function filtrar(array, prueba) {
+    let pasaron = [];
+    for (const elemento of array) {
+        if (prueba(elemento)) {
+            pasaron.push(elemento);
+        }
+    }
+    return pasaron;
+}
+
+console.log(filtrar(SCRIPTS, codigo => codigo.living));
+// -> [{name: "Adlam", ...}, ...]
+
+/*
+        Al igual que forEach, filtrar es un método de array estándar, este esta
+    incorporado como filter. El ejemplo definió la función solo para mostrar lo
+    que hace internamente. A partir de ahora, la usaremos así en su lugar:
+*/
+
+console.log(SCRIPTS.filter(codigo => codigo.direction == "ttb"));
+// -> [{name: "Mongolian", ...}, ...]
+
+// ====== Transformando con Map
+
+/*
+    Digamos que tenemos un array de objetos que representan codigos, produci-
+    dos al filtrar el array SCRIPTS de alguna manera. Pero queremos un array de
+    nombres, que es más fácil de inspeccionar.
+        El método map (“mapear”) transforma un array al aplicar una función a todos
+    sus elementos y construir un nuevo array a partir de los valores retornados. El
+    nuevo array tendrá la misma longitud que el array de entrada, pero su contenido
+    ha sido mapeado a una nueva forma en base a la función.
+*/
+
+function map(array, transformar) {
+    let mapeados = [];
+    for (let elemento of array) {
+        mapeados.push(transformar(elemento));
+    }
+    return mapeados;
+}
+let codigosDerechaIzquierda = SCRIPTS.filter((codigo) => codigo.direction == "rtl");
+console.log(map(codigosDerechaIzquierda, codigo => codigo.name));
+// -> ["Adlam", "Arabic", "Imperial Aramaic", ...]
+
+// Al igual que forEach y filter, map es un método de array estándar.
+
+// ====== Resumiendo con Reduce
+
+/*
+    Otra cosa común que hacer con arrays es calcular un valor único a partir de
+    ellos. Nuestro ejemplo recurrente, sumar una colección de números, es una instancia de esto.
+    Otro ejemplo sería encontrar el código con la mayor cantidad de caracteres.
+        La operación de orden superior que representa este patrón se llama reduce
+    ("reducir"), a veces también llamada fold ("doblar"). Esta construye un valor
+    al repetidamente tomar un solo elemento del array y combinándolo con el valor
+    actual. Al sumar números, comenzarías con el número cero y, para cada ele-
+    mento, agragas eso a la suma.
+        Los parámetros para reduce son, además de array, una función de combinación y
+    un valor de inicio. Esta función es un poco menos sencilla que filter
+    y map, así que mira atentamente:
+*/
+
+function reduce(array, combinar, inicio) {
+    let actual = inicio;
+    for (let elemento of array)  {
+        actual = combinar(actual, elemento);
+    }
+    return actual;
+}
+
+console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+// -> 10 
+
+/*
+    El método de array estándar reduce, que por supuesto corresponde a esta 
+    función tiene un mayor comodidad. Si tu array contiene al menos un elemento,
+    tienes permitido omitir el argumento inicio. El método tomará el primer
+    elemento del array como su valor de inicio y comienza a reducir a partir del
+    segundo elemento.
+*/
+
+console.log([1, 2, 3, 4].reduce((a, b)  => a + b));
+// -> 10
+
+/*
+    Para usar reduce (dos veces) para encontrar el código con la mayor cantidad de caracteres,
+    podemos escribir algo como esto:
+*/
+
+function cuentaDeCaracteres(codigo) {
+    return codigo.ranges.reduce((cuenta, [desde, hasta]) => {
+        return cuenta + (hasta  - desde);
+    }, 0)
+}
+
+console.log(SCRIPTS.reduce((a, b) => {
+    return cuentaDeCaracteres(a) < cuentaDeCaracteres(b) ? b : a;
+}));
+// → {name: "Han", …}
+
+/*
+        La función cuentaDeCaracteres reduce los rangos asignados a un codigo
+    sumando sus tamaños. Ten en cuenta el uso de la desestructuración en el
+    parámetro lista de la función reductora. La segunda llamada a reduce luego
+    usa esto para encontrar el codigo más grande al comparar repetidamente dos
+    scripts y retornando el más grande.
+        El codigo Han tiene más de 89,000 caracteres asignados en el Estándar Uni-
+    code, por lo que es, por mucho, el mayor sistema de escritura en el conjunto de
+    datos. Han es un codigo (a veces) usado para texto chino, japonés y coreano.
+    Esos idiomas comparten muchos caracteres, aunque tienden a escribirlos de
+    manera diferente. El consorcio Unicode (con sede en EE.UU.) decidió tratarlos
+    como un único sistema de escritura para ahorrar códigos de caracteres. Esto
+    se llama unificación Han y aún enoja bastante a algunas personas.
+*/
