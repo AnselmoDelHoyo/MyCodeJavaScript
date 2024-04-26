@@ -2495,3 +2495,51 @@ console.log(SCRIPTS.reduce((a, b) => {
     como un único sistema de escritura para ahorrar códigos de caracteres. Esto
     se llama unificación Han y aún enoja bastante a algunas personas.
 */
+
+// ====== Composabilidad
+
+/*
+    Considera cómo habríamos escrito el ejemplo anterior (encontrar el código más
+    grande) sin funciones de orden superior. El código no es mucho peor.
+*/
+
+let mayor = null;
+for (let codigo of SCRIPTS) {
+    if (mayor == null || cuentaDeCaracteres(mayor) < cuentaDeCaracteres(codigo)) {
+        mayor = codigo;
+    }
+}
+console.log(mayor);
+// -> {name: "Han", ...}
+
+/*
+    Las funciones de orden superior comienzan a brillar cuando necesitas com-
+    poner operaciones. Como ejemplo, vamos a escribir código que encuentre el año
+    de origen promedio para los codigos vivos y muertos en el conjunto de datos.
+*/
+
+function promedio(array) {
+    return array.reduce((a, b) => a + b) / array.length;
+}
+
+console.log(Math.round(promedio(
+    SCRIPTS.filter(codigo => codigo.living).map(codigo => codigo.year)
+)));
+// -> 1185
+console.log(Math.round(promedio(
+    SCRIPTS.filter(codigo => !codigo.living).map(codigo => codigo.year)
+)));
+// -> 209
+
+/*
+        Definitivamente también podrías haber escribir este código como un gran
+    ciclo.
+*/
+
+let total2 = 0, cuenta2 = 0;
+for (let codigo of SCRIPTS) {
+    total += codigo.year;
+    cuenta += 1;
+}
+console.log(Math.round(total / cuenta));
+// -> 1185
