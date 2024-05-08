@@ -2611,3 +2611,98 @@ console.log(caballoZapato[0]);
 console.log(caballoZapato.charCodeAt(0));
 // -> 55357 (Código del medio-carácter)
 console.log(caballoZapato.codePointAt(0))
+
+/*
+    El método charCodeAt de JavaScript te da una unidad de código, no un
+    código de carácter completo. El método  codePointAt, añadido despues, si da
+    un carácter completo de Unicode. Entonces podríamas usarlo para obtener
+    caracteres de un string. Pero el argumento pasado a codePointAt sigue siendo
+    un índice en la secuencia de unidades de código. Entonces, para hacer un ciclo
+    a traves de todos los caracteres en un string, todavía tendríamas que lidiar con
+    la cuestión de si un carácter ocupa una o dos unidades de código.
+        Se mencionó que el ciclo for/of también se puede usar en strings.
+    Como codePointAt, este tipo de ciclo se introdujo en un momento en
+    que las personas eran muy conscientes de los problemas con UTF-16. Cuando
+    lo usas para hacer un ciclo a traves de un string, te da caracteres reales, no
+    unidades de código.
+*/
+
+let dragonRosa = "🐉🌹"
+for (let caracter of dragonRosa) {
+    console.log(caracter);
+}
+// -> 🐉
+// -> 🌹
+
+/*
+    Si tienes un caracter (que será un string de unidades de uno o dos códigos),
+    puedes usar codePointAt(0) para obtener su código.
+*/
+
+// ====== Reconociendo texto
+
+/*
+    Tenemos una función codigoCaracter y una forma de correctamente hacer un
+    ciclo a traves de caracteres. 
+*/
+
+function contarPor(elementos, nombreGrupo) {
+    let cuentas = [];
+    for (let elemento of elementos) {
+        let nombre = nombreGrupo(elemento);
+        let conocido = cuentas.findIndex(c => c.nombre == nombre);
+        if (conocido == -1) {
+            cuentas.push({nombre, cuenta: 1})
+        } else {
+            cuentas[conocido].cuenta++
+        }
+    }
+    return cuentas;
+}
+
+console.log(contarPor([1, 2, 3, 4, 5], n => n > 2));
+// -> [{nombre: false, cuenta: 2}, {nombre: true, cuenta: 3}]
+
+/*
+    La función contarPor espera una colección (cualquier cosa con la que po-
+    damos hacer un ciclo for/of) y una función que calcula un nombre de grupo
+    para un elemento dado. Retorna un array de objetos, cada uno de los cuales
+    nombre un grupo y te dice la cantidad de elementos que se encontraron en ese
+    grupo.
+        Utiliza otro método de array, findIndex ("encontrar index"). Este método
+    es algo así como indexOf, pero en lugar de buscar un valor específico, este
+    encuentra el primer valor para el cual la función dada retorna verdadero. Como
+    indexOf, retorna -1 cuando no se encuentra dicho elemento.
+        Usando contarPor, podemos escribir la función que nos dice qué codigos se
+    usan en una pieza de texto.
+*/
+
+function codigosTexto(texto) {
+    let codigos = contarPor(texto, caracter => {
+        let codigo = codigoCaracter(caracter.codePointAt(0));
+        return codigo ? codigo.name : "ninguno";
+    }).filter(({name}) => name != "ninguno");
+
+    let total = codigos.reduce((n, {count}) => n + count, 0);
+    if (total == 0) return "No se encontraron codigos";
+
+    return codigos.map(({name, count}) => {
+        return `${Math.round(count * 100 / total)}% ${name}`;
+    }).join(", ")
+}
+
+console.log(codigosTexto('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
+// -> 61% Han, 22% Latin, 17% Cyrilic
+
+/*
+    La función primero cuenta los caracteres por nombre, usando codigoCaracter
+    para asignarles un nombre, y recurre al string "ninguno" para caracteres que
+    no son parte de ningún codigo. La llamada filter deja afuera las entradas
+    para "ninguno" del array resultante, ya que no estamos interesados en esos
+    caracteres.
+        Para poder calcular porcentajes,primero necesitamos la cantidad total de caracteres
+    que pertenecen a un codigo, lo que podemos calcular con reduce. Si´
+    no se encuentran tales caracteres, la función retorna un string específico. De lo
+    contrario, transforma las entradas de conteo en strings legibles con map y luego
+    las combina con join.
+*/
