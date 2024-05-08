@@ -2543,3 +2543,71 @@ for (let codigo of SCRIPTS) {
 }
 console.log(Math.round(total / cuenta));
 // -> 1185
+
+/*
+        Pero es más difícil de ver qué se está calculando y comó. Y ya que los
+    resultados intermedios no se representan como valores coherentes, sería mucho´
+    más trabajo extraer algo así como promedio en una función aparte.
+
+        En términos de lo que la computadora realmente está haciendo, estos dos 
+    enfoques también son bastante diferentes. El primero creará nuevos arrays al
+    ejecutar filter y map, mientras que el segundo solo computa algunos números, 
+    haciendo menos trabajo. Por lo general, puedes permitirte el enfoque legible,
+    pero si estás procesando arrays enormes, y haciendolo muchas veces, el estilo
+    menos abstracto podría ser mejor debido a la velocidad extra.
+*/
+
+// ======= Strings y Códigos de Caracteres
+
+/*
+    Un uso de conjunto de datos sería averiguar qué código esta usando una pieza
+    de texto. Veamos un programa que hace esto.
+        Recuerda que cada código tiene un array de rangos para los códigos de ca-
+    racteres asociados a el. Entonces, dado un código de carácter, podríamos usar
+    una función como esta para encontrar el código correspondiente (si lo hay):
+*/
+
+function codigoCaracter(codigo_caracter) {
+    for (let codigo of SCRIPTS) {
+        if (codigo.ranges.some(([desde, hasta]) => {
+            return codigo_caracter >= desde && codigo_caracter < hasta; 
+        })) {
+            return codigo;
+        }
+    }
+    return null;
+}
+
+console.log(codigoCaracter(121));
+// -> {name: "latin", ...}
+
+/*
+    El método some ("alguno") toma una
+    función de prueba y te dice si esa función retorna verdadero para cualquiera de 
+    los elementos en el array.
+*/
+
+/*
+        Al dia de hoy UTF-16 generalmente se considera como una mala idea. Parece
+    casi intencionalmente diseñado para invitar a errores. Es fácil escribir progra-
+    mas que pretenden que las unidades de código y caracteres son la misma cosa.
+    Y si tu lenguaje no usa caracteres de dos unidades, esto parecerá funcionar
+    simplemente bien. Pero tan pronto como alguien intente usar dicho programa
+    con algunos menos comunes caracteres chinos, este se rompe. Afortunada-
+    mente, con la llegada del emoji, todo el mundo ha empezado a usar caracteres
+    de dos unidades, y la carga de lidiar con tales problemas esta bastante mejor
+    distribuida.
+        Desafortunadamente, las operaciones obvias con strings de JavaScript, como
+    obtener su longitud a través de la propiedad length y acceder a su contenido
+    usando corchetes, trata solo con unidades de código.
+*/
+
+// Dos caracteres emoji, caballo y zapato.
+let caballoZapato = "🐴👞";
+console.log(caballoZapato.length);
+// -> 4
+console.log(caballoZapato[0]);
+// -> ((Medio-carácter inválido))
+console.log(caballoZapato.charCodeAt(0));
+// -> 55357 (Código del medio-carácter)
+console.log(caballoZapato.codePointAt(0))
