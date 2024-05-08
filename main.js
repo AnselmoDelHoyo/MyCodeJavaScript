@@ -2706,3 +2706,20 @@ console.log(codigosTexto('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
     contrario, transforma las entradas de conteo en strings legibles con map y luego
     las combina con join.
 */
+
+// ====== Resumen
+
+/*
+        Ser capaz de pasar valores de función a otras funciones es un aspecto profunda-
+    mente útil de JavaScript. Nos permite escribir funciones que modelen calculos
+    con “brechas” en ellas. El código que llama a estas funciones pueden llenar
+    estas brechas al proporcionar valores de función.
+        Los arrays proporcionan varios métodos útiles de orden superior. Puedes
+    usar forEach para recorrer los elementos en un array. El método filter retorna un 
+    nuevo array que contiene solo los elementos que pasan una función
+    de predicado. Transformar un array al poner cada elemento a través de una
+    función se hace con map. Puedes usar reduce para combinar todos los elementos
+    en una array a un solo valor. El método some prueba si algun elemento coincide
+    con una función de predicado determinada. Y findIndex encuentra la posición
+    del primer elemento que coincide con un predicado.
+*/
