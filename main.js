@@ -2772,4 +2772,67 @@ console.log(codigosTexto('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
     es llamado encapsulación.
 */
 
+// ====== Métodos
+
+/*
+    Los métodos no son más que propiedades que tienen valores de función. Este
+    es un métodos simple:
+*/
+
+let conejo = {};
+conejo.hablar = function(linea) {
+    console.log(`El conejo dice '${linea}'`);
+};
+
+conejo.hablar("Estoy vivo.");
+// -> El conejo dice 'Estoy vivo.'
+
+/*
+    Por lo general, un método debe hacer algo con que se llamó.
+    Cuando una función es llamada como un método, buscada como una propiedad
+    y llamada inmediatamente, como un objeto.metodo(), la vinculación llamada
+    this("este") en su cuerpo apunta automáticamente al objeto en la cual fue llamada.
+*/
+
+function hablar(linea) {
+    console.log(`El conejo ${this.tipo} dice '${linea}'`);
+}
+let conejoBlanco = { tipo: "blanco", hablar };
+let conejoHambriento = { tipo: "hambriento", hablar };
+
+conejoBlanco.hablar("Oh mis orejas y bigote, " + "que tarde se esta haciendo!");
+// -> El conejo blanco dice 'Oh mis orejas y bigotes, que tarde se está haciendo!'
+conejoHambriento.hablar("Podria comerme una zanahoria ahora mismo.")
+// -> El conejo hambriento dice "Podría comerme una zanahoria ahora mismo."
+
+/*
+    Puedes pensar en this como un parámetro extra que es pasado en una manera diferente.
+    Si quieres pasarlo explícitamente, puedes usar el método call ("llamar") de una función, que
+    toma el valor de this como primer argumento y trata a los argumentos adicionales como parámetros
+    normales.
+*/
+
+hablar.call(conejoHambriento, "Burp!");
+// -> El conejo hambriento dice 'Burp!'
+
+/*
+    Como cada función tiene su propia vinculación this, cuyo valor depende de la forma en como
+    esta se llama, no puedes hacer referencia al this del alcance
+    envolvente en una función regular definida con la palabra clave function.
+        Las funciones de flecha son diferentes, no crean su propia vinculación this,
+    pero pueden ver la vinculación this del alcance a su alrededor. Por lo tanto,
+    puedes hacer algo como el siguiente código, que hace referencia a this desde adentro
+    de una función local:
+*/
+
+function normalizar() {
+    console.log(this.coordinadas.map(n => n / this.length));
+}
+normalizar.call({coordinadas: [0, 2, 3], length: 5});
+// -> [0, 0.4, 0.6]
+
+/*
+    Si hubieras escrito el argumento para map usando la palabra clave function,
+    el código no funcionaría.
+*/
 
