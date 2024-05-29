@@ -2723,3 +2723,53 @@ console.log(codigosTexto('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
     con una función de predicado determinada. Y findIndex encuentra la posición
     del primer elemento que coincide con un predicado.
 */
+
+// ==============================================
+// = Capítulo 6: La Vida Secreta de los Objetos =
+// ==============================================
+
+
+/*
+    En la cultura de la programación, tenemos una cosa llamada programación orientada a objetos,
+    la cual es un conjunto de técnicas que usan objetos (y conceptos ralcionados) como
+    el principio central de la organización del programa.
+        Aunque nadie realmente está de acuerdo con su definición exacta, la programación
+    orientada a objetos ha contribuido al diseño de muchos lenguajes de programación, incluyendo
+    JavaScript. Este capítulo describirá la forma en la que estas ideas pueden ser aplicadas en
+    JavaScript.
+*/
+
+// ====== Encapsulación
+
+/*
+        La idea central en la programación orientada a objetos es dividir a los programas
+    en piezas más pequeñas y hacer que cada pieza sea responsable de gestionar su
+    propio estado.
+        De esta forma, los conocimientos acerca de como funciona una parte del
+    programa pueden mantenerse locales a esa pieza. Alguien trabajando en otra
+    parte del programa no tiene que recordar o ni siquiera tener una idea de ese
+    conocimiento. Cada vez que los detalles locales cambien, solo el código direc-
+    tamente a su alrededor debe ser actualizado.
+    Las diferentes piezas de un programa como tal, interactúan entre sí a través
+    de interfaces, las cuales son conjuntos limitados de funciones y vinculaciones
+    que proporcionan funcionalidades útiles en un nivel más abstracto, ocultando
+    asi su implementación interna.
+        Tales piezas del programa se modelan usando objetos. Sus interfaces consis-
+    ten en un conjunto específico de métodos y propiedades. Las propiedades que
+    son parte de la interfaz se llaman publicas. Las otras, las cuales no deberian
+    ser tocadas por el código externo , se les llama privadas.
+    Muchos lenguajes proporcionan una forma de distinguir entre propiedades
+    publicas y privadas, y ademas evitarán que el código externo pueda acceder
+    a las privadas por completo. JavaScript, una vez más tomando el enfoque
+    minimalista, no hace esto. Todavía no, al menos—hay trabajo en camino para
+    agregar esto al lenguaje.
+        Aunque el lenguaje no tenga esta distinción incorporada, los programadores
+    de JavaScript estan usando esta idea con éxito .Típicamente, la interfaz disponible
+    se describe en la documentación o en los comentarios. También es común poner
+    un carácter de guión bajo (_) al comienzo de los nombres de las propiedades
+    para indicar que estas propiedades son privadas.
+        Separar la interfaz de la implementación es una gran idea. Esto usualmente
+    es llamado encapsulación.
+*/
+
+
