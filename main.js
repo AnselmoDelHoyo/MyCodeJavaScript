@@ -2911,3 +2911,66 @@ conejoAsesino.hablar("SKREEEE!");
     el conejo asesino, contiene propiedades que aplican solo a sí mismo, en este
     caso su tipo, y deriva propiedades compartidas desde su prototipo.
 */
+
+
+// ====== Clases
+
+/*
+        El sistema de prototipos en JavaScript se puede interpretar como un enfoque
+    informal de un concepto orientado a objetos llamado clasees. Una clase define
+    la forma de un tipo de objeto—qué métodos y propiedades tiene este. Tal
+    objeto es llamado una instancia de la clase.
+        Los prototipos son útiles para definir propiedades en las cuales todas las ins-
+    tancias de una clase compartan el mismo valor, como métodos. Las propiedades
+    que difieren por instancia, como la propiedad tipo en nuestros conejos, necesi-
+    tan almacenarse directamente en los objetos mismos.
+        Entonces, para crear una instancia de una clase dada, debes crear un objeto
+    que derive del prototipo adecuado, pero también debes asegurarte de que, en
+    sí mismo, este objeto tenga las propiedades que las instancias de esta clase se
+    supone que tengan. Esto es lo que una función constructora hace.
+*/
+
+function crearConejo(tipo) {
+    let conejo = Object.create(conejoPrototipo);
+    conejo.tipo = tipo;
+    return conejo;
+}
+
+/*
+        JavaScript proporciona una manera de hacer que la definición de este tipo
+    de funciones sea más fácil. Si colocas la palabra clave new (“new”) delante de
+    una llamada de función, la función sera tratada como un constructor. Esto
+    significa que un objeto con el prototipo adecuado es creado automáticamente,
+    vinculado a this en la función, y retornado al final de la función.
+        El objeto prototipo utilizado al construir objetos se encuentra al tomar la
+    propiedad prototype de la función constructora
+*/
+
+function Conejo(tipo) {
+    this.tipo = tipo;
+}
+Conejo.prototype.hablar = function(linea) {
+    console.log(`El conejo ${this.tipo} dice '${linea}'`);
+};
+let conejoRaro = new Conejo("raro");
+
+/*
+        Los constructores (todas las funciones, de hecho) automáticamente obtenen
+    una propiedad llamada prototype, que por defecto contiene un objeto simple
+    y vacío, que deriva de Object.prototype. Puedes sobrescribirlo con un nuevo
+    objeto se asi quieres. O puedes agragar propiedades al objeto ya existente,
+    como lo hace el ejemplo.
+        Por convención, los nombres de los constructores tienen la primera letra en
+    mayúscula para que se puedan distinguir fácilmente de otras funciones.
+        Es importante entender la distinción entre la forma en que un prototipo está
+    asociado con un constructor (a través de su propiedad prototype) y la forma
+    en que los objetos tienen un prototipo (que se puede encontrar con Object.
+    getPrototypeOf). El prototipo real de un constructor es Function.prototype,
+    ya que los constructores son funciones. Su propiedad prototype contiene el
+    prototipo utilizado para las instancias creadas a traves de el.
+*/
+
+console.log(Object.getPrototypeOf(Conejo) == Function.prototype);
+// -> true
+console.log(Object.getPrototypeOf(conejoRaro) == Conejo.prototype);
+// -> true
