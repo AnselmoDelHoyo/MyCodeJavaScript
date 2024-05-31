@@ -2836,3 +2836,78 @@ normalizar.call({coordinadas: [0, 2, 3], length: 5});
     el código no funcionaría.
 */
 
+// ====== Prototipos
+
+// Observa atentamente.
+
+let vacio = {};
+console.log(vacio.toString);
+// -> function toString()...{}
+console.log(vacio.toString());
+// -> [object Object]
+
+// Saqué una propiedad de un objeto vacío. Magia!
+
+/*
+    Bueno, en realidad no. Simplemente he estado ocultando información ac-
+    erca de como funcionan los objetos en JavaScript. En adición a su conjunto de
+    propiedades, la mayoría de los objetos también tienen un prototipo. Un pro-
+    totipo es otro objeto que se utiliza como una reserva de propiedades alternativa.
+    Cuando un objeto recibe una solicitud por una propiedad que este no tiene, se buscará
+    en su prototipo la propiedad, luego en el prototipo del prototipo y asi sucesivamente.
+        Así que, ¿quién es el prototipo de ese objeto vacío? Es el gran prototipo
+    ancestral, la entidad detrás de casit todos los objetos, Object.prototype ("Obje-
+    to.prototipo").
+        Así que, quién es el prototipo de ese objeto vacío? Es el gran prototipo
+    ancestral, la entidad detrás de casi todos los objetos, Object.prototype ("Objeto.pro-
+    tipo");
+*/
+
+console.log(Object.getPrototypeOf({}) == Object.prototype)
+// -> true
+console.log(Object.getPrototypeOf(Object.prototype));
+// -> null
+
+/*
+        Como puedes adivinar, Object.getPrototypeOf retorno el prototipo
+    de un objeto.
+        Las relaciones prototipo de los objetos en JavaScript forman una estructura
+    en forma de árbol, y en la raíz de esta estructura se encuentra Object.prototype.
+    Este proporciona algunos métodos que pueden ser accedidos por todos los objetos,
+    como toString, que convierte un objeto en una representación de tipo string.
+        Muchos objetos no tienen Object. prototype directamente como su prototipo,
+    pero en su lugar tienen otro objeto que proporciona un conjunto diferente de propie-
+    dades predeterminadas. Las funciones derivan de Function.prototype,
+    y los arrays derivan de Array.prototype.
+*/
+
+console.log(Object.getPrototypeOf(Math.max) == Function.prototype);
+// -> true
+console.log(Object.getPrototypeOf([]) == Array.prototype);
+// -> true
+
+/*
+    Tal prototipo de objeto tendrá en si mismo un prototipo, a menudo Object.prototype,
+    por lo que aún proporciona indirectamente métodos como toString.
+        Puede usar Object.create para crear un objeto con un prototipo específico.
+*/
+
+let conejoPrototipo = {
+    hablar(linea) {
+        console.log(`El conejo ${this.tipo} dice '${linea}'`);
+    }
+};
+let conejoAsesino = Object.create(conejoPrototipo);
+conejoAsesino.tipo = "asesino";
+conejoAsesino.hablar("SKREEEE!");
+// -> El conejo asesino dice 'SKREEEE!'
+
+/*
+        Una propiedad como hablar(linea) en una expresión de objeto es un atajo
+    para definir un método. Esta crea una propiedad llamada hablar y le da una
+    función como su valor.
+        El conejo “prototipo” actúa como un contenedor para las propiedades que
+    son compartidas por todos los conejos. Un objeto de conejo individual, como
+    el conejo asesino, contiene propiedades que aplican solo a sí mismo, en este
+    caso su tipo, y deriva propiedades compartidas desde su prototipo.
+*/
