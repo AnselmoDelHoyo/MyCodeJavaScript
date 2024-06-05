@@ -2974,3 +2974,48 @@ console.log(Object.getPrototypeOf(Conejo) == Function.prototype);
 // -> true
 console.log(Object.getPrototypeOf(conejoRaro) == Conejo.prototype);
 // -> true
+
+// ====== Notación de Clase
+
+/*
+    Entonces, las clases en Javascript son funciones constructoras con una propiedad
+    prototipo. Así es como funcionn, y hasta 2015, esa era la manera en como
+    tenías que escribirlas. Estos días tenemos una notación menos incómoda.
+*/
+
+class Conejo {
+    constructor(tipo) {
+        this.tipo = tipo;
+    }
+    hablar(linea) {
+        console.log(`El conjeo ${this.tipo} de '${linea}'`);
+    }
+}
+
+let conejoAsesino = new Conejo("asesino");
+let conejoNegro = new Conejo("negro");
+
+/* 
+        La palabra clave class ("clase ") comienza una declaración de clase, que nos
+    permite un constructor y un conjunto de metodos, todo en un solo lugar.
+    Cualquier número de métodos se pueden escribir dentro de las llaves de la
+    declaración. El método llamado constructor es tratado de una manera especial.
+    Este proporciona la función constructora real, que estará cinculada al nombre
+    Conejo, los otros me´todos estarán empacados en el prototipo de ese constructor.
+    Por lo tanto, la declaración de clase anterior es equivalenete a la definición
+    de constructor en la sección anterior. Solo que se ve mejor.
+        Actualmente las declaraciones de clase solo permiten que los métodos, 
+    propiedades que contengan funciones, puedan ser agregados al prototipo. Esto
+    puede ser algo inconveniente para cuando quieras guardar un valor no-funcional
+    allí. La próxima versión del lenguaje probablemente mejore esto. Por ahora, tú
+    puedes crear tales propiedades al manipular directamente el prototipo después de
+    haber definido la clase.
+        Al igual que funcion, class se puede usar tanto en posiciones de declaración
+    como de expresión. Cuando se usa como una expresión, no define una vinculación,
+    pero solo produce el constructor como un valor. Tienes permitido omitir el nombre
+    de clase en una expresión de clase.
+*/
+
+let objeto = new class { obtenerPalabra() { return "hola"; } };
+console.log(objeto.obtenerPalabra());
+// -> hola
