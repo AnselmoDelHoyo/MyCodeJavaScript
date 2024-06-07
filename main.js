@@ -2946,13 +2946,13 @@ function crearConejo(tipo) {
     propiedad prototype de la función constructora
 */
 
-function Conejo(tipo) {
+function Conejo2(tipo) {
     this.tipo = tipo;
 }
-Conejo.prototype.hablar = function(linea) {
+Conejo2.prototype.hablar = function(linea) {
     console.log(`El conejo ${this.tipo} dice '${linea}'`);
 };
-let conejoRaro = new Conejo("raro");
+let conejoRaro2 = new Conejo2("raro");
 
 /*
         Los constructores (todas las funciones, de hecho) automáticamente obtenen
@@ -2970,9 +2970,9 @@ let conejoRaro = new Conejo("raro");
     prototipo utilizado para las instancias creadas a traves de el.
 */
 
-console.log(Object.getPrototypeOf(Conejo) == Function.prototype);
+console.log(Object.getPrototypeOf(Conejo2) == Function.prototype);
 // -> true
-console.log(Object.getPrototypeOf(conejoRaro) == Conejo.prototype);
+console.log(Object.getPrototypeOf(conejoRaro2) == Conejo2.prototype);
 // -> true
 
 // ====== Notación de Clase
@@ -2983,7 +2983,7 @@ console.log(Object.getPrototypeOf(conejoRaro) == Conejo.prototype);
     tenías que escribirlas. Estos días tenemos una notación menos incómoda.
 */
 
-class Conejo {
+class Conejo3 {
     constructor(tipo) {
         this.tipo = tipo;
     }
@@ -2992,8 +2992,8 @@ class Conejo {
     }
 }
 
-let conejoAsesino = new Conejo("asesino");
-let conejoNegro = new Conejo("negro");
+let conejoAsesino3 = new Conejo3("asesino");
+let conejoNegro3 = new Conejo3("negro");
 
 /* 
         La palabra clave class ("clase ") comienza una declaración de clase, que nos
@@ -3019,3 +3019,48 @@ let conejoNegro = new Conejo("negro");
 let objeto = new class { obtenerPalabra() { return "hola"; } };
 console.log(objeto.obtenerPalabra());
 // -> hola
+
+// ====== Sobreescribiendo Propiedades Derivadas
+
+/*
+    Cuando le agregas una propiedad a un objeto, ya sea que esté presente en el
+    prototipo o no, la propiedad es agregada al objeto en si mismo. Si ya había una
+    propiedad con el mismo nombre en el prototipo, esta propiedad ya no afectará
+    al objeto, ya que ahora está oculta detrás de la propiedad del propio objeto.
+*/
+
+Conejo3.prototype.dientes = "pequeños";
+console.log(conejoAsesino.dientes);
+// -> pequeños
+conejoAsesino3.dientes = "largos, filosos, y sangrientos";
+console.log(conejoAsesino3.dientes);
+// -> largos, filosos, y sangrientos
+console.log(conejoNegro3.dientes);
+// -> pequeños
+console.log(Conejo3.prototype.dientes);
+// -> pequeños
+
+/*
+        Sobreescribir propiedades que existen en un prototipo puede ser algo útil
+    que hacer. Como muestra el ejemplo de los dientes de conejo, esto se puede
+    usar para expresar propiedades excepcionales en instancias de una clase más
+    genérica de objetos, dejando que los objetos no-excepcionales tomen un valor
+    estándar desde su prototipo.
+        También puedes sobreescribir para darle a los prototipos estándar de función
+    y array un método diferente toString al del objeto prototipo básico.
+*/
+
+console.log(Array.prototype.toString == Object.prototype.toString);
+// -> false
+console.log([1, 2].toString());
+// -> 1,2
+
+/*
+    Llamar a toString en un array de un resultado similar al de una llamada.join(",") 
+    en él, pone comas entre los valores del array. llamar directamente a Object.prototype.toString
+    con un array produce un string diferente. Esa función no sabe acerca de los arrays, por lo que
+    simplemente pone la palabra object y el nombre del tipo entre corchetes.
+*/
+
+    console.log(Object.prototype.toString.call([1, 2]));
+    // -> [object Array]
