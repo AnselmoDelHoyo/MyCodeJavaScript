@@ -3139,3 +3139,36 @@ console.log({x: 1}.hasOwnProperty("x"));
 // -> true
 console.log({x: 1}.hasOwnProperty("toString"));
 // -> false
+
+// ====== Polimorfismo
+
+/*
+    Cuando llamas a la función String (que convierte un valor a un string) en un
+    objeto, llamará al método toString en ese objeto para tratar de crear un string
+    significativo a partir de el. Mencioné que algunos de los prototipos estándar
+    definen su propia versión de toString para que puedan crear un string que
+    contenga información más útil que "[object Object]". También puedes hacer
+    eso tú mismo.
+*/
+
+Conejo2.prototype.toString = function() {
+    return `un conejo ${this.tipo}`;
+};
+
+console.log(String(conejoNegro));
+// -> un conejo negro
+
+/*
+        Esta es una instancia simple de una idea poderosa. Cuando un pedazo de
+    código es escrito para funcionar con objetos que tienen una cierta interfaz—
+    en este caso, un método toString, cualquier tipo de objeto que soporte esta
+    interfaz se puede conectar al código, y simplemente funcionará.
+    Esta técnica se llama polimorfismo. El código polimórfico puede funcionar
+    con valores de diferentes formas, siempre y cuando soporten la interfaz que este
+    espera.
+        Mencioné en el Capítulo 4 que un ciclo for/of puede recorrer varios tipos de
+    estructuras de datos. Este es otro caso de polimorfismo—tales ciclos esperan
+    que la estructura de datos exponga una interfaz específica, lo que hacen los
+    arrays y strings. Y también puedes agregar esta interfaz a tus propios objetos!
+    Pero antes de que podamos hacer eso, necesitamos saber qué son los símbolos.
+*/
