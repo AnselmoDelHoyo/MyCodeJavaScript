@@ -3064,3 +3064,78 @@ console.log([1, 2].toString());
 
     console.log(Object.prototype.toString.call([1, 2]));
     // -> [object Array]
+
+// ====== Mapas
+
+/*
+        Vimos a la palabra map usada en el capítulo anterior para una operación que
+    transforma una estructura de datos al aplicar una función en sus elementos.
+        Un mapa (sustantivo) es una estructura de datos que asocia valores (las
+    llaves) con otros valores. Por ejemplo, es posible que desees mapear nombres
+    a edades. Es posible usar objetos para esto.
+*/
+
+let edades = {
+    Boris: 39,
+    Liang: 22,
+    Julia: 63
+};
+
+console.log(`Julia tiene ${edades["Julia"]}`);
+// -> Julia tiene 62
+console.log("Se conoce la edad de Jack?", "Jack" in edades);
+// -> Se conoce la edad de Jack? false
+console.log("Se conoce la edad de toString", "toString" in edades);
+// -> Se conoce la edad de toString? true
+
+/*
+        Aquí, los nombres de las propiedades del objeto son los nombres de las personas, y los valores de las propiedades sus edades. Pero ciertamente no incluimos a nadie llamado toString en nuestro mapa. Sin embargo, debido a que
+    los objetos simples se derivan de Object.prototype, parece que la propiedad
+    está ahí.
+        Como tal, usar objetos simples como mapas es peligroso. Hay varias formas
+    posibles de evitar este problema. Primero, es posible crear objetos sin ningun
+    prototipo. Si pasas null a Object.create, el objeto resultante no se derivará
+    de Object.prototype y podra ser usado de forma segura como un mapa.
+*/
+
+console.log("toString" in Object.create(null));
+
+// -> false
+
+/*
+    Los nombres de las propiedades de los objetos deben ser strings. Si necesitas
+    un mapa cuyas claves no puedan ser convertidas fácilmente a strings—como
+    objetos—no puedes usar un objeto como tu mapa.
+    Afortunadamente, JavaScript viene con una clase llamada Map que esta escrita para este propósito exacto. Esta almacena un mapeo y permite cualquier
+    tipo de llaves.
+*/
+
+let edades2 = new Map();
+edades2.set("Boris");
+edades2.set("Liang", 22);
+edades2.set("Julia", 62);
+
+console.log(`Júlia tiene ${edades2.get("Júlia")}`);
+// → Júlia tiene 62
+console.log("Se conoce la edad de Jack?", edades2.has("Jack"));
+// → Se conoce la edad de Jack? false
+console.log(edades2.has("toString"));
+// → false
+
+/*
+        Los métodos set (“establecer”),get (“obtener”), y has (“tiene”) son parte
+    de la interfaz del objeto Map. Escribir una estructura de datos que pueda
+    actualizarse rápidamente y buscar en un gran conjunto de valores no es fácil,
+    pero no tenemos que preocuparnos acerca de eso. Alguien más lo hizo por
+    nosotros, y podemos utilizar esta simple interfaz para usar su trabajo.
+        Si tienes un objeto simple que necesitas tratar como un mapa por alguna
+    razón, es útil saber que Object.keys solo retorna las llaves propias del objeto,
+    no las que estan en el prototipo. Como alternativa al operador in, puedes usar
+    el métodohasOwnProperty (“tienePropiaPropiedad”), el cual ignora el prototipo
+    del objeto.
+*/
+
+console.log({x: 1}.hasOwnProperty("x"));
+// -> true
+console.log({x: 1}.hasOwnProperty("toString"));
+// -> false
