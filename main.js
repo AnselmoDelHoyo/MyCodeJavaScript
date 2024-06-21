@@ -3155,7 +3155,7 @@ Conejo2.prototype.toString = function() {
     return `un conejo ${this.tipo}`;
 };
 
-console.log(String(conejoNegro));
+console.log(String(conejoNegro3));
 // -> un conejo negro
 
 /*
@@ -3172,3 +3172,64 @@ console.log(String(conejoNegro));
     arrays y strings. Y también puedes agregar esta interfaz a tus propios objetos!
     Pero antes de que podamos hacer eso, necesitamos saber qué son los símbolos.
 */
+
+/*
+    ====== Símbolos
+*/
+
+/*
+        Es posible que múltiples interfaces usen el mismo nombre de propiedad para
+    diferentes cosas. Por ejemplo, podría definir una interfaz en la que se suponga
+    que el método toString convierte el objeto a una pieza de hilo. No sería posible
+    para un objeto ajustarse a esa interfaz y al uso estándar de toString.
+        Esa sería una mala idea, y este problema no es muy común. La mayoria
+    de los programadores de JavaScript simplemente no piensan en eso. Pero los
+    diseñadores del lenguaje, cuyo trabajo es pensar acerca de estas cosas, nos han
+    proporcionado una solución de todos modos.
+        Cuando afirmé que los nombres de propiedad son strings, eso no fue del todo
+    preciso. Usualmente lo son, pero también pueden ser símbolos. Los símbolos son
+    valores creados con la función Symbol. A diferencia de los strings, los símbolos
+    recién creados son únicos, no puedes crear el mismo símbolo dos veces.
+*/
+
+let simbolo = Symbol("nombre");
+console.log(simbolo == Symbol("nombre"));
+// -> false
+Conejo3.prototype[simbolo] = 55;
+console.log(conejoNegro3[simbolo]);
+// -> 55
+
+/*
+        El string que pases a Symbol es incluido cuando lo conviertas a string, y puede
+    hacer que sea más fácil reconocer un símbolo cuando, por ejemplo, lo muestres
+    en la consola. Pero no tiene sentido más allá de eso—múltiples símbolos pueden
+    tener el mismo nombre.
+        Al ser únicos y utilizables como nombres de propiedad, los símbolos son
+    adecuados para definir interfaces que pueden vivir pacíficamente junto a otras
+    propiedades, sin importar cuáles sean sus nombres.
+*/
+
+const simboloToString = Symbol("toString");
+Array.prototype[simboloToString] = function() {
+    return `${this.length} cm de hilo azul`;
+}
+
+console.log([1, 2].toString());
+// -> 1, 2
+console.log([1, 2][simboloToString]())
+// -> 2 cm de hilo azul
+
+
+/*
+    Es posible incluir propiedades de símbolos en expresiones de objetos y clases
+    usando corchetes alrededor del nombre de la propiedad. Eso hace que se evalúe el
+    nombre de la propiedad, al igual que la notación de corchetes para acceder propiedades,
+    lo cual nos permite hacer referencia a una vinculación que contiene
+    el símbolo.
+*/
+
+let objetoString = {
+    [simboloToString]() { return "una cuerda de cañamo"; }
+}
+console.log(objetoString[simboloToString]());
+// -> una cuerda de cañamo
