@@ -3233,3 +3233,100 @@ let objetoString = {
 }
 console.log(objetoString[simboloToString]());
 // -> una cuerda de cañamo
+
+// La Interfaz de Iterador
+
+/*
+    Se espra que el objeto dado a un ciclo for/of sea iterable. Esto significa que
+    tenga un método llamado con el símbolo Symbol.iterator (un valor de símbolo
+    definido por el idioma, almacenado como una propiedad de la función Symbol).
+        Cuando sea llamado, ese método debe retornar un objeto que proporcione
+    una segunda interfaz, iteradora. Esta es la cosa real que realiza la iteración.
+    Tiene un método next ("siguiente") que retorna el siguiente resultado. Ese 
+    resultado debería ser un objeto con una propiedad value ("valor"), que propor-
+    ciona el siguiente valor, si hay uno, y una propiedad done ("listo") que debería
+    ser cierta cuando no haya más resultados y falso de lo contrario.
+        Podemos usar directamente esta interfaz nosotros mismos.
+*/
+
+let iteradorOK = "OK"[Symbol.iterator]();
+console.log(iteradorOK.next());
+console.log(iteradorOK.next());
+console.log(iteradorOK.next());
+
+/*
+    Implementamos una estructura de datos iterable. Construiremos una clase
+    matriz, que actuara como un array bidimensional.
+*/
+
+class Matriz {
+    constructor(ancho, altura, elemento = (x, y) => undefined) {
+        this.ancho = ancho;
+        this.altura = altura;
+        this.contenido = [];
+        
+        for (let y = 0; y < altura; y++) {
+            for (let x = 0; x < ancho; x++) {
+                this.contenido[y * ancho + x] = elemento(x, y)
+            }
+        }
+    }
+
+    obtener(x, y) {
+        return this.contenido[y * this.ancho + x];
+    }
+
+    establecer(x, y, valor) {
+        this.contenido[y * this.ancho + x] = valor;
+    }
+}
+
+class IteradorMatriz {
+    constructor(matriz) {
+        this.x = 0;
+        this.y = 0;
+        this.matriz = matriz;
+    }
+
+    next() {
+        if (this.y == this.matriz.altura) return {done: true};
+
+        let value = {
+            x: this.x,
+            y: this.y,
+            value: this.matriz.obtener(this.x, this.y)
+        };
+
+        this.x++;
+
+        if (this.x == this.matriz.ancho) {
+            this.x = 0;
+            this.y++;
+        }
+
+        return {value, done: false};
+    }
+}
+
+/*
+        Configuremos la clase Matriz para que sea iterable. A lo largo de este libro,
+    Ocasionalmente usaré la manipulación del prototipo después de los hechos para
+    agragar métodos a clases, para que las piezas individuales de código permanezcan pequeñas
+    y autónomas. En un programa regular, donde no hay necesidad de dividir el código en pedazos
+    pequeños, declararias estos métodos directamente en la clase.
+*/
+
+Matriz.prototype[Symbol.iterator] = function() {
+    return new IteradorMatriz(this);
+};
+
+// Ahora podemos recorrer una matirz con for/of.
+
+let matriz = new Matriz(2, 2, (x, y) => `valor ${x},${y}`);
+for (let {x, y, value} of matriz) {
+    console.log(x, y, value);
+}
+// -> 0 0 valor 0,0
+// -> 1 0 valor 1,0
+// -> 0 1 valor 0,1
+// -> 1 1 valor 1,1
