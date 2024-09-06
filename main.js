@@ -3330,3 +3330,71 @@ for (let {x, y, value} of matriz) {
 // -> 1 0 valor 1,0
 // -> 0 1 valor 0,1
 // -> 1 1 valor 1,1
+
+// ====== Getters, Setters y Estáticos
+
+/*
+    A menudo, las interfaces consisten principalmente de métodos, pero también
+    está bien incluir propiedades que contengas valores que no sean de función.
+    Por ejemplo. Los objetos Map tienen una propiedad size ("tamaño") que te dice
+    cuántas claves hay almacenadas en ellos.
+        Ni siquiera es necesario que dicho objeto calcule y almacene tales propiedades
+    directamente en la instancia. Incluso las propiedades que pueden ser accedidas
+    directamente pueden ocultar una llamada a un método. Tales métodos se llaman
+    getters, y se definen escribiendo get ("obtener") delante del nombre del método
+    en una expresión de objeto o declaración de clase.
+*/
+
+let tamañoCambiante = {
+    get tamaño() {
+        return Math.floor(Math.random() * 100);
+    }
+};
+
+console.log(tamañoCambiante.tamaño);
+// -> 73
+console.log(tamañoCambiante.tamaño);
+// -> 49
+
+/*
+    Cuando alguien lee desde la propiedad tamaño de este objeto, el método asoci-
+    ado es llamado. Puedes hacer algo similar cuando se escribe en un apropiedad,
+    usando un setter.
+*/
+
+class Temperatura {
+    constructor(celsius) {
+        this.celsius = celsius;
+    }
+    get fahrenheit() {
+        return this.celsius * 1.8 + 32;
+    }
+    set fahrenheit(valor) {
+        this.celsius = (valor - 32) / 1.8;
+    }
+
+    static desdeFahrenheit(valor) {
+        return new Temperatura((valor - 32) / 1.8);
+    }
+}
+
+let temp = new Temperatura(22);
+console.log(temp.fahrenheit);
+// -> 71.6
+temp.fahrenheit = 86;
+console.log(temp.celsius);
+// -> 30
+
+/*
+        La clase Temperatura te permite leer y escribir la temperatura ya sea en
+    grados Celsius o grados Fahrenheit, pero internamente solo almacena Celsius
+    y convierte automáticamente a Celsius en el getter y setter fahrenheit.
+        Algunas veces quieres adjuntar algunas propiedades directamente a tu fun
+    ción constructora, en lugar de al prototipo. Tales métodos no tienen acceso a
+    una instancia de clase, pero pueden, por ejemplo, ser utilizados para propor
+    cionar formas adicionales de crear instancias.
+        Dentro de una declaración de clase, métodos que tienen static (“estatico”)
+    escrito antes su nombre son almacenados en el constructor. Entonces, la clase
+    Temperatura te permite escribir Temperature.desdeFahrenheit(100) para crear
+    una temperatura usando grados Fahrenheit.
+*/
