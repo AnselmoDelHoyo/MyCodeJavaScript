@@ -3398,3 +3398,68 @@ console.log(temp.celsius);
     Temperatura te permite escribir Temperature.desdeFahrenheit(100) para crear
     una temperatura usando grados Fahrenheit.
 */
+
+// ====== Herencia
+console.log("====== HERENCIA ======")
+
+/*
+    Algunas matrices son conocidas por ser simétricas. Si duplicas una matriz simétrica
+    alrededor de su diagonal de arriba-izquierda a derecha-abajo, esta se mantiene igual.
+    En otras palabras, el valor almacenado en x,y es siempre el mismo al de y,x.
+        Imagina que necesitamos una estructura de datos como Matriz pero que haga cumplir
+    el hecho de que la matriz es y siga siendo simétrica. Podríamos escribirla desde cero,
+    pero eso implicaría repetir algo de código muy similar al que ya hemos escrito.
+*/
+
+class MatrizSimetrica extends Matriz {
+    constructor(tamaño, elemento = (x, y) => undefined) {
+        super(tamaño, tamaño, (x, y) => {
+            if (x < y) return elemento(y, x);
+            else return elemento(x, y);
+        });
+    }
+
+    set(x, y, valor) {
+        super.set(x, y, valor);
+        if (x != y) {
+            super.set(y, x, valor);
+        }
+    }
+}
+
+let matriz2 = new MatrizSimetrica(5, (x, y) => `${x},${y}`);
+console.log(matriz2.obtener(2,3));
+// -> 3,2
+
+/*
+    El uso de la palabra extends indica que esta clase no debe estar basada
+    directamente en el prototipo de Objeto predeterminado, pero de alguna otra clase.
+    Esta se llama la superclase. La clase derivada es la subclase.
+        Para inicializar una instancia de MatrizSimetrica, el constructor llama
+    a su constructor de superclase a través de la palabra clave super. Esto es necesario
+    porque si este nuevo objeto se comporta (más o menos) como una Matriz, va a necesitar
+    las propiedades de instancia que tienen las matrices. En orden para
+    asegurar que la matriz sea simétrica, el constructor ajusta el método contenido
+    para intercambiar las coordenadas de los valores por debajo del diagonal.
+        El método set nuevamente usa super, pero esta vez no para llamar al con-
+    structor, pero para llamar a un método específico del conjunto de metodos
+    de la superclase. Estamos redefiniendo set pero queremos usar el compor
+    tamiento original. Ya que this.set se refiere al nuevo métodoset, llamarlo no
+    funcionaria. Dentro de los métodos de clase, super proporciona una forma de
+    llamar a los métodos tal y como se definieron en la superclase.
+        La herencia nos permite construir tipos de datos ligeramente diferentes a
+    partir de tipos de datos existentes con relativamente poco trabajo. Es una parte
+    fundamental de la tradición orientada a objetos, junto con la encapsulación y el
+    polimorfismo. Pero mientras que los últimos dos son considerados como ideas
+    maravillosas en la actualidad, la herencia es más controversial.
+        Mientras que la encapsulación y el polimorfismo se pueden usar para sepa
+    rar piezas de código entre sí, reduciendo el enredo del programa en general, la
+    herencia fundamentalmente vincula las clases, creando mas enredo. Al heredar
+    de una clase, generalmente tienes que saber más sobre cómo funciona que
+    cuando simplemente la usas. La herencia puede ser una herramienta útil, y la
+    uso de vez en cuando en mis propios programas, pero no debería ser la primera
+    herramienta que busques, y probablemente no deberías estar buscando oportu
+    nidades para construir jerarquías (árboles genealógicos de clases) de clases en
+    una manera activa.
+*/
+
