@@ -3484,4 +3484,35 @@ console.log([1] instanceof Array);
 */
 
 
+// ====== Resumen 
+
+/*
+        Entonces los objetos hacen más que solo tener sus propias propiedades. Ellos
+    tienen prototipos, que son otros objetos. Estos actuarán como si tuvieran
+    propiedades que no tienen mientras su prototipo tenga esa propiedad. Los
+    objetos simples tienen Object.prototype como su prototipo.
+        Los constructores, que son funciones cuyos nombres generalmente comienzan
+    con una mayúscula, se pueden usar con el operador new para crear nuevos
+    objetos. El prototipo del nuevo objeto será el objeto encontrado en la propiedad
+    prototype del constructor. Puedes hacer un buen uso de esto al poner las
+    propiedades que todos los valores de un tipo dado comparten en su prototipo.
+    Hay una notación de class que proporciona una manera clara de definir un
+    constructor y su prototipo.
+        Puedes definir getters y setters para secretamente llamar a métodos cada vez
+    que se acceda a la propiedad de un objeto. Los métodos estáticos son métodos
+    almacenados en el constructor de clase, en lugar de su prototipo.
+        El operador instanceof puede, dado un objeto y un constructor, decir si ese
+    objeto es una instancia de ese constructor.
+        Una cosa útil que hacer con los objetos es especificar una interfaz para ellos
+    y decirle a todos que se supone que deben hablar con ese objeto solo a través
+    de esa interfaz. El resto de los detalles que componen tu objeto ahora estan
+    encapsulados, escondidos detrás de la interfaz.
+        Más de un tipo puede implementar la misma interfaz. El código escrito
+    para utilizar una interfaz automáticamente sabe cómo trabajar con cualquier
+    cantidad de objetos diferentes que proporcionen la interfaz. Esto se llama
+    polimorfismo.
+        Al implementar múltiples clases que difieran solo en algunos detalles, puede
+    ser útil escribir las nuevas clases como subclases de una clase existente, heredando
+    parte de su comportamiento.
+*/
 
