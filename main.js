@@ -3463,3 +3463,25 @@ console.log(matriz2.obtener(2,3));
     una manera activa.
 */
 
+
+// ====== El Operador Instanceof
+
+/*
+    Ocasioalmente es útil saber si un objeot fue derivado de una clase específica.
+    Para esto, JavaScript proporciona un operador binario llamado instanceof
+    (instancia de).
+*/
+
+console.log(new MatrizSimetrica(2) instanceof MatrizSimetrica);
+console.log(new MatrizSimetrica(2) instanceof Matriz);
+console.log(new Matriz(2, 2) instanceof MatrizSimetrica);
+console.log([1] instanceof Array);
+
+/*
+    El operador verá a través de los tipos heredados, por lo que una MatrizSimetrica
+    es una instancia de Matriz. El operador también se puede aplicar a construc-
+    tores estándar como Array. Casi todos los objetos son una instancia de Object.
+*/
+
+
+
