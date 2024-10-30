@@ -18,7 +18,8 @@
     "exercise-5-1": "node exercises/chapter-5/exercise-1",
     "exercise-5-2": "node exercises/chapter-5/exercise-2",
     "exercise-5-3": "node exercises/chapter-5/exercise-3",
-    "exercise-5-4": "node exercises/chapter-5/exercise-4"
+    "exercise-5-4": "node exercises/chapter-5/exercise-4",
+    "exercise-6-1": "node exercises/chapter-6/exercise-1"
   },
   "keywords": [],
   "author": "",
